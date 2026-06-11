@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moses Rahnama — Research Portfolio</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --text: #c9d1d9;
+      --muted: #8b949e;
+      --heading: #e6edf3;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    header h1 { font-size: 2.4rem; color: var(--heading); margin-bottom: 0.4rem; }
+    header p.tagline { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.2rem; }
+    header .links a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 0.6rem;
+      font-size: 0.95rem;
+    }
+    header .links a:hover { text-decoration: underline; }
+    main { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+    section { margin-bottom: 3rem; }
+    section h2 {
+      font-size: 1.35rem;
+      color: var(--heading);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.2rem;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: var(--accent); }
+    .card h3 { font-size: 1.05rem; color: var(--heading); margin-bottom: 0.5rem; }
+    .card h3 a { color: var(--accent); text-decoration: none; }
+    .card h3 a:hover { text-decoration: underline; }
+    .card .meta { font-size: 0.83rem; color: var(--muted); margin-bottom: 0.6rem; }
+    .card .meta span { margin-right: 1rem; }
+    .card p { font-size: 0.93rem; color: var(--text); }
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-right: 0.4rem;
+      background: #1f6feb33;
+      color: var(--accent);
+      border: 1px solid #1f6feb55;
+    }
+    .badge.green {
+      background: #238636aa;
+      color: var(--accent2);
+      border-color: #2ea04388;
+    }
+    .repo-link {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.25rem 0.75rem;
+    }
+    .repo-link:hover { background: #1f6feb22; border-color: var(--accent); }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Moses Rahnama</h1>
+  <p class="tagline">Formal Methods · Term Rewriting · Mechanized Proofs · LLM Evaluation</p>
+  <div class="links">
+    <a href="https://github.com/MosesRahnama" target="_blank">GitHub</a>
+    <a href="https://arxiv.org/search/?searchtype=author&query=Rahnama%2C+Moses" target="_blank">arXiv</a>
+    <a href="https://zenodo.org/search?q=Rahnama" target="_blank">Zenodo</a>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <h2>Research</h2>
+
+    <div class="card">
+      <h3><a href="https://arxiv.org/abs/2512.00081" target="_blank">The Orientation Boundary for Step-Duplicating Recursors: Mechanized Impossibility, Escape, and Certification</a></h3>
+      <div class="meta">
+        <span><span class="badge">arXiv</span>2512.00081</span>
+        <span>Moses Rahnama</span>
+        <span>Lean 4 · Term Rewriting · Termination Analysis</span>
+      </div>
+      <p>
+        Formalizes the orientation boundary for first-order step-duplicating recursors. Proves that no measure in twelve formalized direct classes can strictly orient the duplicating step uniformly. Results are fully mechanized in Lean 4, constituting the first mechanized object-level barrier theorem for a fixed terminating system across multiple direct measure classes — proved without reductions or undecidability arguments. Also isolates and classifies escape routes within the direct universe.
+      </p>
+      <a class="repo-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" target="_blank">⬡ Lean Artifact Repository</a>
+    </div>
+
+    <div class="card">
+      <h3><a href="https://arxiv.org/abs/2604.22844" target="_blank">Operational Inexpressibility at the Step-Duplicating Primitive Recursor Orientation Boundary</a></h3>
+      <div class="meta">
+        <span><span class="badge">arXiv</span>2604.22844</span>
+        <span>Moses Rahnama · Mina Analytics · April 2026</span>
+        <span>Term Rewriting · Proof Theory · Structural Barriers</span>
+      </div>
+      <p>
+        Identifies a structural property of term-rewriting proof systems called <em>operational inexpressibility</em>: no derivation depends on a specified input dimension and also constrains the target question. Proves the canonical instance arises at the primitive recursion duplicator, where under any direct whole-term measure the recursor's mass profile coincides with that of a true circular reference. Connects the boundary to the Feferman–Beklemishev reflection family and recovers a structural identity with Gödel 1931 as a specialization.
+      </p>
+      <a class="repo-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" target="_blank">⬡ Lean Artifact Repository</a>
+    </div>
+
+    <div class="card">
+      <h3><a href="https://zenodo.org/records/20034530" target="_blank">Failing at the Floor: LLM Formal Reasoning Collapse on the Primitive Duplicating Recursor</a></h3>
+      <div class="meta">
+        <span><span class="badge green">Zenodo</span>10.5281/zenodo.20034530</span>
+        <span>Moses Rahnama · Published May 5, 2026 · Version v4</span>
+        <span>LLM Benchmarking · Formal Reasoning · Termination Proving</span>
+      </div>
+      <p>
+        Introduces the <em>Primitive Recursor Test</em> (PRT) — a 27-model, 1,188-session benchmark over nine task families, graded on termination verdict, mathematical adequacy, and boundary-admissibility. On the KO7 kernel (TTT2-certified in 0.06 seconds), 94/324 (29.0%) of LLM sessions claimed the system does not terminate, only 3/324 retrieved the correct transformed-call witness, and 175/324 (54.0%) answered with a provably false method. Establishes a representation-shift bottleneck as a fundamental barrier to direct measure reasoning in frontier LLMs.
+      </p>
+      <a class="repo-link" href="https://github.com/MosesRahnama/PRT-Benchmark" target="_blank">⬡ PRT-Benchmark Repository</a>
+    </div>
+
+  </section>
+
+  <section>
+    <h2>Open-Source Repositories</h2>
+
+    <div class="card">
+      <h3><a href="https://github.com/MosesRahnama/The-Orientation-Boundary" target="_blank">MosesRahnama / The-Orientation-Boundary</a></h3>
+      <div class="meta">
+        <span>Lean 100%</span>
+        <span>Public</span>
+      </div>
+      <p>Lean 4 companion artifact for <em>The Orientation Boundary</em> papers. Contains the full mechanized formalization of the impossibility theorems, escape characterizations, and certification chain for the KO7 witness system.</p>
+    </div>
+
+    <div class="card">
+      <h3><a href="https://github.com/MosesRahnama/PRT-Benchmark" target="_blank">MosesRahnama / PRT-Benchmark</a></h3>
+      <div class="meta">
+        <span>Lean 50.7% · Python 49.3%</span>
+        <span>Public · ⭐ 2</span>
+      </div>
+      <p>Full data release for <em>Failing at the Floor</em>. Includes all session data, test files, prompts, Lean artifacts, and TTT2 artifacts across 27 frontier models and 1,188 sessions. Comes with a Croissant 1.0 metadata file, datasheet, data statement, citation file, and JSON-LD landing page.</p>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>Moses Rahnama &mdash; <a href="https://github.com/MosesRahnama" style="color: #58a6ff;">github.com/MosesRahnama</a></p>
+</footer>
+
+</body>
+</html>
