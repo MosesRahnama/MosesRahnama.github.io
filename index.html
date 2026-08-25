@@ -169,21 +169,49 @@
   .nav-inner {
     max-width: var(--maxw);
     margin: 0 auto;
-    padding: .7rem 1.5rem;
-    display: flex; flex-wrap: wrap; gap: 1.4rem;
+    padding: .8rem 1.5rem;
+    display: flex; flex-wrap: wrap; align-items: center; gap: .6rem;
   }
-  nav a {
+  .nav-label {
     font-family: var(--mono);
-    font-size: .76rem;
-    letter-spacing: .09em;
+    font-size: .7rem;
+    letter-spacing: .12em;
     text-transform: uppercase;
     color: var(--muted);
-    text-decoration: none;
-    padding: .15rem 0;
-    border-bottom: 1px solid transparent;
-    transition: color .18s, border-color .18s;
+    margin-right: .3rem;
   }
-  nav a:hover { color: var(--heading); border-color: var(--gold); }
+  nav a {
+    font-family: var(--sans);
+    font-size: .87rem;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: var(--heading);
+    text-decoration: none;
+    background: var(--surface-2);
+    border: 1px solid var(--border-hi);
+    border-radius: 8px;
+    padding: .42rem .9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    transition: color .18s, border-color .18s, background .18s, transform .18s;
+  }
+  nav a::before {
+    content: "↓";
+    font-size: .8em;
+    opacity: .55;
+  }
+  nav a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: var(--gold-dim);
+    transform: translateY(-1px);
+  }
+  nav a:hover::before { opacity: 1; }
+  @media (max-width: 560px) {
+    .nav-label { display: none; }
+    nav a { font-size: .8rem; padding: .38rem .7rem; }
+  }
 
   /* ---------- Layout ---------- */
   main { max-width: var(--maxw); margin: 0 auto; padding: 3rem 1.5rem 1rem; }
@@ -405,6 +433,7 @@
 
 <nav>
   <div class="nav-inner">
+    <span class="nav-label">Jump to</span>
     <a href="#projects">Professional Projects</a>
     <a href="#media">In the Media</a>
     <a href="#research">Research</a>
