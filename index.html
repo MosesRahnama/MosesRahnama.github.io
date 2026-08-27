@@ -347,6 +347,17 @@
     transition: border-color .18s, color .18s, background .18s;
   }
   .btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+  .btn.primary {
+    background: var(--gold-dim);
+    border-color: var(--gold);
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .btn.primary:hover {
+    background: color-mix(in srgb, var(--gold) 22%, transparent);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
   .btn.pending {
     color: var(--muted);
     border-style: dashed;
@@ -468,7 +479,8 @@
         <p>
           Every page is read twice, blind, by two different model families and reconciled by an adjudicator, with
           mechanical gates that refuse any value whose printed evidence quote does not contain it. Every figure stays
-          one join away from the page, table, row and quote it came from.
+          one join away from the page, table, row and quote it came from. An interactive dashboard presents the
+          resulting fund performance, benchmark and data-quality results.
         </p>
         <div class="stats">
           <div class="stat"><span class="num">442</span><span class="lbl">source PDFs · 40,788 pages</span></div>
@@ -481,6 +493,7 @@
           <span class="chip">TVPI / DPI / RVPI</span><span class="chip">Star Schema</span>
         </div>
         <div class="actions">
+          <a class="btn primary" href="https://mosesrahnama.github.io/Alts-ETL-Analytics-Project/dashboard.html" target="_blank" rel="noopener">Open the interactive dashboard</a>
           <a class="btn" href="https://github.com/MosesRahnama/Alts-ETL-Analytics-Project" target="_blank" rel="noopener">View repository</a>
           <a class="btn" href="https://github.com/MosesRahnama/Alts-ETL-Analytics-Project/blob/main/instructions/REVIEWER-GUIDE.md" target="_blank" rel="noopener">Ten-minute reviewer guide</a>
         </div>
