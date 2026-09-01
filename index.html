@@ -1,847 +1,1550 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Moses Rahnama - Markets Research, Data & Formal Methods</title>
-<meta name="description" content="Moses Rahnama: energy and commodity markets research, private-markets data and analytics, and a mechanized research program on the limits of formal reasoning." />
-<meta name="author" content="Moses Rahnama" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Moses Rahnama - Markets Research, Data & Formal Methods" />
-<meta property="og:description" content="Energy and commodity markets research, private-markets data and analytics, and mechanized research on the limits of formal reasoning." />
-<meta property="og:url" content="https://mosesrahnama.github.io/" />
-<meta name="twitter:card" content="summary" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0e14'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%230792e3' text-anchor='middle'%3EMR%3C/text%3E%3C/svg%3E" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --bg:        #0b0e14;
-    --bg-soft:   #0f131c;
-    --surface:   #12161f;
-    --surface-2: #171d28;
-    --border:    #232b3a;
-    --border-hi: #33405a;
-    --text:      #c3ccdb;
-    --heading:   #eef2f8;
-    --muted:     #8492a8;
-    --accent:    #6aa8ff;
-    --accent-dim:#6aa8ff22;
-    --gold:      #0792e3;
-    --gold-dim:  #0792e322;
-    --green:     #4ec9a0;
-    --radius:    12px;
-    --maxw:      min(1320px, 94vw);
-    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
-    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moses Rahnama - Markets Research, Data & Formal Methods</title>
+    <meta
+      name="description"
+      content="Moses Rahnama: energy and commodity markets research, private-markets data and analytics, and a mechanized research program on the limits of formal reasoning."
+    />
+    <meta name="author" content="Moses Rahnama" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Moses Rahnama - Markets Research, Data & Formal Methods"
+    />
+    <meta
+      property="og:description"
+      content="Energy and commodity markets research, private-markets data and analytics, and mechanized research on the limits of formal reasoning."
+    />
+    <meta property="og:url" content="https://mosesrahnama.github.io/" />
+    <meta name="twitter:card" content="summary" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0e14'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%230792e3' text-anchor='middle'%3EMR%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0e14;
+        --bg-soft: #0f131c;
+        --surface: #12161f;
+        --surface-2: #171d28;
+        --border: #232b3a;
+        --border-hi: #33405a;
+        --text: #c3ccdb;
+        --heading: #eef2f8;
+        --muted: #8492a8;
+        --accent: #6aa8ff;
+        --accent-dim: #6aa8ff22;
+        --gold: #0792e3;
+        --gold-dim: #0792e322;
+        --green: #4ec9a0;
+        --radius: 12px;
+        --maxw: min(1320px, 94vw);
+        --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+        --sans:
+          "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+          Arial, sans-serif;
+        --mono:
+          ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+          "Liberation Mono", monospace;
+      }
 
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg:        #fbfaf7;
-      --bg-soft:   #f4f2ed;
-      --surface:   #ffffff;
-      --surface-2: #f7f5f1;
-      --border:    #e2ded5;
-      --border-hi: #c9c2b4;
-      --text:      #3b4250;
-      --heading:   #14171d;
-      --muted:     #6d7484;
-      --accent:    #2563c7;
-      --accent-dim:#2563c714;
-      --gold:      #0a6ea8;
-      --gold-dim:  #0a6ea814;
-      --green:     #1a7f5f;
-    }
-  }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #fbfaf7;
+          --bg-soft: #f4f2ed;
+          --surface: #ffffff;
+          --surface-2: #f7f5f1;
+          --border: #e2ded5;
+          --border-hi: #c9c2b4;
+          --text: #3b4250;
+          --heading: #14171d;
+          --muted: #6d7484;
+          --accent: #2563c7;
+          --accent-dim: #2563c714;
+          --gold: #0a6ea8;
+          --gold-dim: #0a6ea814;
+          --green: #1a7f5f;
+        }
+      }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-  html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; font-size: 16px; }
-  @media (min-width: 1500px) { html { font-size: 17px; } }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 4.5rem;
+        font-size: 16px;
+      }
+      @media (min-width: 1500px) {
+        html {
+          font-size: 17px;
+        }
+      }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 1rem;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        font-size: 1rem;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
 
-  a { color: var(--accent); }
+      a {
+        color: var(--accent);
+      }
 
-  /* ---------- Hero ---------- */
-  .hero {
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--border);
-    background:
-      radial-gradient(900px 380px at 12% -10%, var(--accent-dim), transparent 60%),
-      radial-gradient(700px 340px at 88% 0%, var(--gold-dim), transparent 62%),
-      linear-gradient(180deg, var(--bg-soft), var(--bg));
-  }
-  .hero::after {
-    content: "";
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 64px 64px;
-    opacity: .16;
-    mask-image: radial-gradient(680px 300px at 50% 0%, #000 20%, transparent 78%);
-    -webkit-mask-image: radial-gradient(680px 300px at 50% 0%, #000 20%, transparent 78%);
-    pointer-events: none;
-  }
-  .hero-inner {
-    position: relative; z-index: 1;
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 4.2rem 1.5rem 3rem;
-  }
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: .74rem;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: .9rem;
-  }
-  .hero h1 {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: clamp(2.5rem, 6vw, 3.6rem);
-    line-height: 1.06;
-    letter-spacing: -.02em;
-    color: var(--heading);
-    margin-bottom: .7rem;
-  }
-  .hero .tagline {
-    font-family: var(--serif);
-    font-size: clamp(1.02rem, 2.3vw, 1.22rem);
-    color: var(--muted);
-    margin-bottom: 1.5rem;
-  }
-  .hero .tagline em { color: var(--text); font-style: normal; }
-  .hero .intro {
-    max-width: 76ch;
-    font-size: 1rem;
-    color: var(--text);
-    margin-bottom: 1.9rem;
-  }
-  .contact { display: flex; flex-wrap: wrap; gap: .55rem; }
-  .contact a {
-    display: inline-flex;
-    align-items: center;
-    gap: .4rem;
-    font-size: .87rem;
-    font-weight: 500;
-    text-decoration: none;
-    color: var(--text);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: .42rem .95rem;
-    transition: border-color .18s, color .18s, transform .18s;
-  }
-  .contact a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
-  .contact .email {
-    display: inline-flex;
-    align-items: center;
-    font-family: var(--mono);
-    font-size: .87rem;
-    color: var(--heading);
-    background: var(--surface);
-    border: 1px solid var(--border-hi);
-    border-radius: 999px;
-    padding: .42rem 1rem;
-    user-select: all;
-  }
+      /* ---------- Hero ---------- */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border);
+        background:
+          radial-gradient(
+            900px 380px at 12% -10%,
+            var(--accent-dim),
+            transparent 60%
+          ),
+          radial-gradient(
+            700px 340px at 88% 0%,
+            var(--gold-dim),
+            transparent 62%
+          ),
+          linear-gradient(180deg, var(--bg-soft), var(--bg));
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 64px 64px;
+        opacity: 0.16;
+        mask-image: radial-gradient(
+          680px 300px at 50% 0%,
+          #000 20%,
+          transparent 78%
+        );
+        -webkit-mask-image: radial-gradient(
+          680px 300px at 50% 0%,
+          #000 20%,
+          transparent 78%
+        );
+        pointer-events: none;
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 4.2rem 1.5rem 3rem;
+      }
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.9rem;
+      }
+      .hero h1 {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: clamp(2.5rem, 6vw, 3.6rem);
+        line-height: 1.06;
+        letter-spacing: -0.02em;
+        color: var(--heading);
+        margin-bottom: 0.7rem;
+      }
+      .hero .tagline {
+        font-family: var(--serif);
+        font-size: clamp(1.02rem, 2.3vw, 1.22rem);
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+      }
+      .hero .tagline em {
+        color: var(--text);
+        font-style: normal;
+      }
+      .hero .intro {
+        max-width: 76ch;
+        font-size: 1rem;
+        color: var(--text);
+        margin-bottom: 1.9rem;
+      }
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+      }
+      .contact a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.87rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: var(--text);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.42rem 0.95rem;
+        transition:
+          border-color 0.18s,
+          color 0.18s,
+          transform 0.18s;
+      }
+      .contact a:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        transform: translateY(-1px);
+      }
+      .contact .email {
+        display: inline-flex;
+        align-items: center;
+        font-family: var(--mono);
+        font-size: 0.87rem;
+        color: var(--heading);
+        background: var(--surface);
+        border: 1px solid var(--border-hi);
+        border-radius: 999px;
+        padding: 0.42rem 1rem;
+        user-select: all;
+      }
 
-  /* ---------- Nav ---------- */
-  nav {
-    position: sticky; top: 0; z-index: 20;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: .8rem 1.5rem;
-    display: flex; flex-wrap: wrap; align-items: center; gap: .6rem;
-  }
-  .nav-label {
-    font-family: var(--mono);
-    font-size: .7rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-right: .3rem;
-  }
-  nav a {
-    font-family: var(--sans);
-    font-size: .87rem;
-    font-weight: 600;
-    letter-spacing: .01em;
-    color: var(--heading);
-    text-decoration: none;
-    background: var(--surface-2);
-    border: 1px solid var(--border-hi);
-    border-radius: 8px;
-    padding: .42rem .9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: .4rem;
-    transition: color .18s, border-color .18s, background .18s, transform .18s;
-  }
-  nav a::before {
-    content: "↓";
-    font-size: .8em;
-    opacity: .55;
-  }
-  nav a:hover {
-    color: var(--gold);
-    border-color: var(--gold);
-    background: var(--gold-dim);
-    transform: translateY(-1px);
-  }
-  nav a:hover::before { opacity: 1; }
-  @media (max-width: 560px) {
-    .nav-label { display: none; }
-    nav a { font-size: .8rem; padding: .38rem .7rem; }
-  }
+      /* ---------- Nav ---------- */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-inner {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0.8rem 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .nav-label {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-right: 0.3rem;
+      }
+      nav a {
+        font-family: var(--sans);
+        font-size: 0.87rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        color: var(--heading);
+        text-decoration: none;
+        background: var(--surface-2);
+        border: 1px solid var(--border-hi);
+        border-radius: 8px;
+        padding: 0.42rem 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        transition:
+          color 0.18s,
+          border-color 0.18s,
+          background 0.18s,
+          transform 0.18s;
+      }
+      nav a::before {
+        content: "↓";
+        font-size: 0.8em;
+        opacity: 0.55;
+      }
+      nav a:hover {
+        color: var(--gold);
+        border-color: var(--gold);
+        background: var(--gold-dim);
+        transform: translateY(-1px);
+      }
+      nav a:hover::before {
+        opacity: 1;
+      }
+      @media (max-width: 560px) {
+        .nav-label {
+          display: none;
+        }
+        nav a {
+          font-size: 0.8rem;
+          padding: 0.38rem 0.7rem;
+        }
+      }
 
-  /* ---------- Layout ---------- */
-  main { max-width: var(--maxw); margin: 0 auto; padding: 3rem 1.5rem 1rem; }
-  section { margin-bottom: 3.6rem; scroll-margin-top: 4.5rem; }
+      /* ---------- Layout ---------- */
+      main {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 3rem 1.5rem 1rem;
+      }
+      section {
+        margin-bottom: 3.6rem;
+        scroll-margin-top: 4.5rem;
+      }
 
-  .section-head { margin-bottom: 1.6rem; }
-  .section-head h2 {
-    font-family: var(--serif);
-    font-size: 1.75rem;
-    font-weight: 600;
-    letter-spacing: -.015em;
-    color: var(--heading);
-    display: flex; align-items: center; gap: .75rem;
-  }
-  .section-head h2::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--border), transparent);
-  }
-  .section-head p {
-    margin-top: .5rem;
-    color: var(--muted);
-    font-size: .95rem;
-    max-width: 70ch;
-  }
+      .section-head {
+        margin-bottom: 1.6rem;
+      }
+      .section-head h2 {
+        font-family: var(--serif);
+        font-size: 1.75rem;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        color: var(--heading);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .section-head h2::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--border), transparent);
+      }
+      .section-head p {
+        margin-top: 0.5rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+        max-width: 70ch;
+      }
 
-  /* ---------- Cards ---------- */
-  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
-  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+      /* ---------- Cards ---------- */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.1rem;
+      }
+      @media (max-width: 760px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
-  .card {
-    position: relative;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem 1.6rem;
-    display: flex; flex-direction: column;
-    transition: border-color .2s, transform .2s, box-shadow .2s;
-  }
-  .card::before {
-    content: "";
-    position: absolute; left: 0; top: 18px; bottom: 18px;
-    width: 2px; border-radius: 2px;
-    background: transparent;
-    transition: background .2s;
-  }
-  .card:hover { border-color: var(--border-hi); transform: translateY(-2px); box-shadow: 0 10px 30px -18px rgba(0,0,0,.65); }
-  .card.pro:hover::before { background: var(--gold); }
-  .card.res:hover::before { background: var(--accent); }
+      .card {
+        position: relative;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.5rem 1.6rem;
+        display: flex;
+        flex-direction: column;
+        transition:
+          border-color 0.2s,
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 18px;
+        bottom: 18px;
+        width: 2px;
+        border-radius: 2px;
+        background: transparent;
+        transition: background 0.2s;
+      }
+      .card:hover {
+        border-color: var(--border-hi);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.65);
+      }
+      .card.pro:hover::before {
+        background: var(--gold);
+      }
+      .card.res:hover::before {
+        background: var(--accent);
+      }
 
-  .card h3 {
-    font-family: var(--serif);
-    font-size: 1.16rem;
-    font-weight: 600;
-    line-height: 1.3;
-    color: var(--heading);
-    margin-bottom: .55rem;
-  }
-  .card h3 a { color: var(--heading); text-decoration: none; }
-  .card h3 a:hover { color: var(--accent); }
+      .card h3 {
+        font-family: var(--serif);
+        font-size: 1.16rem;
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--heading);
+        margin-bottom: 0.55rem;
+      }
+      .card h3 a {
+        color: var(--heading);
+        text-decoration: none;
+      }
+      .card h3 a:hover {
+        color: var(--accent);
+      }
 
-  .meta {
-    font-family: var(--mono);
-    font-size: .73rem;
-    color: var(--muted);
-    letter-spacing: .03em;
-    margin-bottom: .8rem;
-    display: flex; flex-wrap: wrap; gap: .35rem .85rem;
-  }
-  .card p { font-size: .92rem; color: var(--text); }
-  .card p + p { margin-top: .7rem; }
-  .card .note { font-size: .82rem; color: var(--muted); font-style: italic; }
+      .meta {
+        font-family: var(--mono);
+        font-size: 0.73rem;
+        color: var(--muted);
+        letter-spacing: 0.03em;
+        margin-bottom: 0.8rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem 0.85rem;
+      }
+      .card p {
+        font-size: 0.92rem;
+        color: var(--text);
+      }
+      .card p + p {
+        margin-top: 0.7rem;
+      }
+      .card .note {
+        font-size: 0.82rem;
+        color: var(--muted);
+        font-style: italic;
+      }
 
-  .badge {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: .68rem;
-    font-weight: 600;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    padding: .18rem .5rem;
-    border-radius: 5px;
-    background: var(--accent-dim);
-    color: var(--accent);
-    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-  }
-  .badge.gold { background: var(--gold-dim); color: var(--gold); border-color: color-mix(in srgb, var(--gold) 38%, transparent); }
-  .badge.green { background: color-mix(in srgb, var(--green) 13%, transparent); color: var(--green); border-color: color-mix(in srgb, var(--green) 38%, transparent); }
+      .badge {
+        display: inline-block;
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.18rem 0.5rem;
+        border-radius: 5px;
+        background: var(--accent-dim);
+        color: var(--accent);
+        border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      }
+      .badge.gold {
+        background: var(--gold-dim);
+        color: var(--gold);
+        border-color: color-mix(in srgb, var(--gold) 38%, transparent);
+      }
+      .badge.green {
+        background: color-mix(in srgb, var(--green) 13%, transparent);
+        color: var(--green);
+        border-color: color-mix(in srgb, var(--green) 38%, transparent);
+      }
 
-  /* stat strip */
-  .stats {
-    display: flex; flex-wrap: wrap; gap: 1.4rem;
-    margin: 1.05rem 0 .3rem;
-    padding: .85rem 0 .1rem;
-    border-top: 1px solid var(--border);
-  }
-  .stat .num {
-    font-family: var(--mono);
-    font-size: 1.02rem;
-    font-weight: 600;
-    color: var(--heading);
-    display: block;
-    line-height: 1.2;
-  }
-  .stat .lbl {
-    font-size: .72rem;
-    color: var(--muted);
-    letter-spacing: .03em;
-  }
+      /* stat strip */
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.4rem;
+        margin: 1.05rem 0 0.3rem;
+        padding: 0.85rem 0 0.1rem;
+        border-top: 1px solid var(--border);
+      }
+      .stat .num {
+        font-family: var(--mono);
+        font-size: 1.02rem;
+        font-weight: 600;
+        color: var(--heading);
+        display: block;
+        line-height: 1.2;
+      }
+      .stat .lbl {
+        font-size: 0.72rem;
+        color: var(--muted);
+        letter-spacing: 0.03em;
+      }
 
-  .chips { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: 1rem; }
-  .chip {
-    font-family: var(--mono);
-    font-size: .7rem;
-    color: var(--muted);
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: .16rem .45rem;
-  }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-top: 1rem;
+      }
+      .chip {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--muted);
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        padding: 0.16rem 0.45rem;
+      }
 
-  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
-  .btn {
-    font-size: .82rem;
-    font-weight: 500;
-    text-decoration: none;
-    color: var(--text);
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    padding: .38rem .8rem;
-    transition: border-color .18s, color .18s, background .18s;
-  }
-  .btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
-  .btn.primary {
-    background: var(--gold-dim);
-    border-color: var(--gold);
-    color: var(--gold);
-    font-weight: 600;
-  }
-  .btn.primary:hover {
-    background: color-mix(in srgb, var(--gold) 22%, transparent);
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-  .btn.pending {
-    color: var(--muted);
-    border-style: dashed;
-    cursor: default;
-  }
-  .btn.pending:hover { color: var(--muted); border-color: var(--border); background: var(--surface-2); }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.1rem;
+      }
+      .btn {
+        font-size: 0.82rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: var(--text);
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        padding: 0.38rem 0.8rem;
+        transition:
+          border-color 0.18s,
+          color 0.18s,
+          background 0.18s;
+      }
+      .btn:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+        background: var(--accent-dim);
+      }
+      .btn.primary {
+        background: var(--gold-dim);
+        border-color: var(--gold);
+        color: var(--gold);
+        font-weight: 600;
+      }
+      .btn.primary:hover {
+        background: color-mix(in srgb, var(--gold) 22%, transparent);
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+      .btn.pending {
+        color: var(--muted);
+        border-style: dashed;
+        cursor: default;
+      }
+      .btn.pending:hover {
+        color: var(--muted);
+        border-color: var(--border);
+        background: var(--surface-2);
+      }
 
-  /* media quote */
-  .outlet {
-    font-family: var(--mono);
-    font-size: .7rem;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  blockquote.quote {
-    font-family: var(--serif);
-    font-size: 1.02rem;
-    line-height: 1.6;
-    color: var(--heading);
-    border-left: 2px solid var(--gold);
-    padding: .1rem 0 .1rem 1.1rem;
-    margin: .9rem 0 .2rem;
-  }
-  blockquote.quote + .attrib {
-    font-size: .82rem;
-    color: var(--muted);
-    padding-left: 1.2rem;
-  }
+      .paper-drawer {
+        margin-top: 1.1rem;
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface-2);
+      }
+      .paper-drawer > summary {
+        list-style: none;
+        cursor: pointer;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--gold);
+        padding: 0.5rem 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+      }
+      .paper-drawer > summary::-webkit-details-marker {
+        display: none;
+      }
+      .paper-drawer > summary::after {
+        content: "v";
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        color: var(--muted);
+        transition: transform 0.15s;
+      }
+      .paper-drawer[open] > summary::after {
+        transform: rotate(180deg);
+      }
+      .paper-list {
+        list-style: none;
+        border-top: 1px solid var(--border);
+        padding: 0.25rem 0.55rem 0.55rem;
+      }
+      .paper-item {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.8rem;
+        padding: 0.7rem 0.35rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .paper-item:last-child {
+        border-bottom: none;
+      }
+      .paper-item h4 {
+        font-family: var(--serif);
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--heading);
+        margin-bottom: 0.2rem;
+      }
+      .paper-item p {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin: 0;
+      }
 
-  /* research program statement */
-  .lede {
-    font-family: var(--serif);
-    font-size: 1.02rem;
-    line-height: 1.72;
-    color: var(--text);
-    border-left: 2px solid var(--gold);
-    padding: .15rem 0 .15rem 1.25rem;
-    margin-bottom: 1.7rem;
-    max-width: 76ch;
-  }
+      /* media quote */
+      .outlet {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      blockquote.quote {
+        font-family: var(--serif);
+        font-size: 1.02rem;
+        line-height: 1.6;
+        color: var(--heading);
+        border-left: 2px solid var(--gold);
+        padding: 0.1rem 0 0.1rem 1.1rem;
+        margin: 0.9rem 0 0.2rem;
+      }
+      blockquote.quote + .attrib {
+        font-size: 0.82rem;
+        color: var(--muted);
+        padding-left: 1.2rem;
+      }
 
-  .stack { display: flex; flex-direction: column; gap: 1.1rem; }
+      /* research program statement */
+      .lede {
+        font-family: var(--serif);
+        font-size: 1.02rem;
+        line-height: 1.72;
+        color: var(--text);
+        border-left: 2px solid var(--gold);
+        padding: 0.15rem 0 0.15rem 1.25rem;
+        margin-bottom: 1.7rem;
+        max-width: 76ch;
+      }
 
-  footer {
-    border-top: 1px solid var(--border);
-    margin-top: 2rem;
-    padding: 2.2rem 1.5rem 2.6rem;
-    text-align: center;
-    color: var(--muted);
-    font-size: .85rem;
-  }
-  footer a { color: var(--accent); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-  footer .disclaimer { margin-top: .7rem; font-size: .76rem; max-width: 60ch; margin-left: auto; margin-right: auto; }
-</style>
-</head>
-<body>
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+      }
 
-<header class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">New York, NY</div>
-    <h1>Moses Rahnama</h1>
-    <p class="tagline">
-      <em>Energy &amp; commodity markets</em> · <em>Private-markets data &amp; analytics</em> · <em>Formal methods &amp; LLM evaluation</em>
-    </p>
-    <p class="intro">
-      I build the analysis and the data underneath it. Twelve years of institutional research and investing across
-      energy, commodities and alternative assets, at Energy Aspects, Millennium, DRW, Houlihan Lokey and Preqin, and as
-      co-founder of a real-estate analytics company. Alongside that, a mechanized research program on the structural
-      limits of formal reasoning, machine-checked in Lean&nbsp;4.
-    </p>
-    <div class="contact">
-      <span class="email">moses.rahnama@gmail.com</span>
-      <a href="https://www.linkedin.com/in/moses-rahnama/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/MosesRahnama" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://arxiv.org/search/?searchtype=author&amp;query=Rahnama%2C+Moses" target="_blank" rel="noopener">arXiv</a>
-      <a href="https://zenodo.org/search?q=Rahnama" target="_blank" rel="noopener">Zenodo</a>
-      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939" target="_blank" rel="noopener">SSRN</a>
-      <a href="https://scholar.google.com/citations?user=bRBM708AAAAJ" target="_blank" rel="noopener">Scholar</a>
-    </div>
-  </div>
-</header>
-
-<nav>
-  <div class="nav-inner">
-    <span class="nav-label">Jump to</span>
-    <a href="#projects">Professional Projects</a>
-    <a href="#research">Research Papers</a>
-    <a href="#media">In the Media</a>
-    <a href="#repos">Repositories</a>
-  </div>
-</nav>
-
-<main>
-
-  <section id="projects">
-    <div class="section-head">
-      <h2>Professional Projects</h2>
-      <p>Selected work in markets research, commodity modeling and private-markets data infrastructure. Each is a full
-         path from raw data to a decision.</p>
-    </div>
-
-    <div class="grid">
-
-      <div class="card pro">
-        <h3><a href="https://github.com/MosesRahnama/Alts-ETL-Analytics-Project" target="_blank" rel="noopener">AI-Powered Alternative-Investments ETL &amp; Analytics Pipeline</a></h3>
-        <div class="meta">
-          <span><span class="badge gold">2026</span></span>
-          <span>ETL · Fund Performance · DuckDB</span>
-        </div>
-        <p>
-          Private-market reports are among the hardest documents in finance to turn into data: every general partner
-          prints a different table, and a number copied into the wrong column is worse than no number at all. This
-          pipeline takes 442 public and FOIA fund reports and produces source-linked facts, a relational fund database,
-          recomputed quality tests, public-market equivalent analysis and bounded portfolio allocations.
+      footer {
+        border-top: 1px solid var(--border);
+        margin-top: 2rem;
+        padding: 2.2rem 1.5rem 2.6rem;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      footer .disclaimer {
+        margin-top: 0.7rem;
+        font-size: 0.76rem;
+        max-width: 60ch;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">New York, NY</div>
+        <h1>Moses Rahnama</h1>
+        <p class="tagline">
+          <em>Energy &amp; commodity markets</em> ·
+          <em>Private-markets data &amp; analytics</em> ·
+          <em>Formal methods &amp; LLM evaluation</em>
         </p>
-        <p>
-          Every page is read twice, blind, by two different model families and reconciled by an adjudicator, with
-          mechanical gates that refuse any value whose printed evidence quote does not contain it. Every figure stays
-          one join away from the page, table, row and quote it came from. An interactive dashboard presents the
-          resulting fund performance, benchmark and data-quality results.
+        <p class="intro">
+          I build the analysis and the data underneath it. Twelve years of
+          institutional research and investing across energy, commodities and
+          alternative assets, at Energy Aspects, Millennium, DRW, Houlihan Lokey
+          and Preqin, and as co-founder of a real-estate analytics company.
+          Alongside that, a mechanized research program on the structural limits
+          of formal reasoning, machine-checked in Lean&nbsp;4.
         </p>
-        <div class="stats">
-          <div class="stat"><span class="num">442</span><span class="lbl">source PDFs · 40,788 pages</span></div>
-          <div class="stat"><span class="num">7,221</span><span class="lbl">sourced observations</span></div>
-          <div class="stat"><span class="num">12 / 12</span><span class="lbl">defect families caught</span></div>
-        </div>
-        <div class="chips">
-          <span class="chip">Python</span><span class="chip">DuckDB</span><span class="chip">SQL</span>
-          <span class="chip">Kaplan-Schoar PME</span><span class="chip">Direct Alpha</span><span class="chip">XIRR</span>
-          <span class="chip">TVPI / DPI / RVPI</span><span class="chip">Star Schema</span>
-        </div>
-        <div class="actions">
-          <a class="btn primary" href="https://mosesrahnama.github.io/Alts-ETL-Analytics-Project/dashboard.html" target="_blank" rel="noopener">Open the interactive dashboard</a>
-          <a class="btn" href="https://github.com/MosesRahnama/Alts-ETL-Analytics-Project" target="_blank" rel="noopener">View repository</a>
-          <a class="btn" href="https://github.com/MosesRahnama/Alts-ETL-Analytics-Project/blob/main/instructions/REVIEWER-GUIDE.md" target="_blank" rel="noopener">Ten-minute reviewer guide</a>
+        <div class="contact">
+          <span class="email">moses.rahnama@gmail.com</span>
+          <a
+            href="https://www.linkedin.com/in/moses-rahnama/"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/MosesRahnama"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+          <a
+            href="https://arxiv.org/search/?searchtype=author&amp;query=Rahnama%2C+Moses"
+            target="_blank"
+            rel="noopener"
+            >arXiv</a
+          >
+          <a
+            href="https://zenodo.org/search?q=Rahnama"
+            target="_blank"
+            rel="noopener"
+            >Zenodo</a
+          >
+          <a
+            href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939"
+            target="_blank"
+            rel="noopener"
+            >SSRN</a
+          >
+          <a
+            href="https://scholar.google.com/citations?user=bRBM708AAAAJ"
+            target="_blank"
+            rel="noopener"
+            >Scholar</a
+          >
         </div>
       </div>
+    </header>
 
-      <div class="card pro">
-        <h3><a href="https://github.com/MosesRahnama/regional-jet-fuel-arbitrage" target="_blank" rel="noopener">Regional Jet-Fuel Spreads During COVID</a></h3>
-        <div class="meta">
-          <span><span class="badge gold">2020</span></span>
-          <span>Commodity Modeling · Alternative Data</span>
+    <nav>
+      <div class="nav-inner">
+        <span class="nav-label">Jump to</span>
+        <a href="#projects">Professional Projects</a>
+        <a href="#research">Research Papers</a>
+        <a href="#media">In the Media</a>
+        <a href="#repos">Repositories</a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="projects">
+        <div class="section-head">
+          <h2>Professional Projects</h2>
+          <p>
+            Selected work in markets research, commodity modeling and
+            private-markets data infrastructure. Each is a full path from raw
+            data to a decision.
+          </p>
         </div>
-        <p>
-          A fundamentals-to-price model for US jet fuel built during the COVID demand collapse. Daily regional demand is
-          nowcast from live air-traffic data, miles flown out of the 50 busiest airports, then carried through PADD-level
-          supply and demand balances and into a variable-selection model for regional price spreads, cracks and time spreads.
+
+        <div class="grid">
+          <div class="card pro">
+            <h3>
+              <a
+                href="https://github.com/MosesRahnama/Alts-ETL-Analytics-Project"
+                target="_blank"
+                rel="noopener"
+                >AI-Powered Alternative-Investments ETL &amp; Analytics
+                Pipeline</a
+              >
+            </h3>
+            <div class="meta">
+              <span><span class="badge gold">2026</span></span>
+              <span>ETL · Fund Performance · DuckDB</span>
+            </div>
+            <p>
+              Private-market reports are among the hardest documents in finance
+              to turn into data: every general partner prints a different table,
+              and a number copied into the wrong column is worse than no number
+              at all. This pipeline takes 442 public and FOIA fund reports and
+              produces source-linked facts, a relational fund database,
+              recomputed quality tests, public-market equivalent analysis and
+              bounded portfolio allocations.
+            </p>
+            <p>
+              Every page is read twice, blind, by two different model families
+              and reconciled by an adjudicator, with mechanical gates that
+              refuse any value whose printed evidence quote does not contain it.
+              Every figure stays one join away from the page, table, row and
+              quote it came from. An interactive dashboard presents the
+              resulting fund performance, benchmark and data-quality results.
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <span class="num">442</span
+                ><span class="lbl">source PDFs · 40,788 pages</span>
+              </div>
+              <div class="stat">
+                <span class="num">7,221</span
+                ><span class="lbl">sourced observations</span>
+              </div>
+              <div class="stat">
+                <span class="num">12 / 12</span
+                ><span class="lbl">defect families caught</span>
+              </div>
+            </div>
+            <div class="chips">
+              <span class="chip">Python</span><span class="chip">DuckDB</span
+              ><span class="chip">SQL</span>
+              <span class="chip">Kaplan-Schoar PME</span
+              ><span class="chip">Direct Alpha</span
+              ><span class="chip">XIRR</span>
+              <span class="chip">TVPI / DPI / RVPI</span
+              ><span class="chip">Star Schema</span>
+            </div>
+            <div class="actions">
+              <a
+                class="btn primary"
+                href="https://mosesrahnama.github.io/Alts-ETL-Analytics-Project/dashboard.html"
+                target="_blank"
+                rel="noopener"
+                >Open the interactive dashboard</a
+              >
+              <a
+                class="btn"
+                href="https://github.com/MosesRahnama/Alts-ETL-Analytics-Project"
+                target="_blank"
+                rel="noopener"
+                >View repository</a
+              >
+              <a
+                class="btn"
+                href="https://github.com/MosesRahnama/Alts-ETL-Analytics-Project/blob/main/instructions/REVIEWER-GUIDE.md"
+                target="_blank"
+                rel="noopener"
+                >Ten-minute reviewer guide</a
+              >
+            </div>
+          </div>
+
+          <div class="card pro">
+            <h3>
+              <a
+                href="https://github.com/MosesRahnama/regional-jet-fuel-arbitrage"
+                target="_blank"
+                rel="noopener"
+                >Regional Jet-Fuel Spreads During COVID</a
+              >
+            </h3>
+            <div class="meta">
+              <span><span class="badge gold">2020</span></span>
+              <span>Commodity Modeling · Alternative Data</span>
+            </div>
+            <p>
+              A fundamentals-to-price model for US jet fuel built during the
+              COVID demand collapse. Daily regional demand is nowcast from live
+              air-traffic data, miles flown out of the 50 busiest airports, then
+              carried through PADD-level supply and demand balances and into a
+              variable-selection model for regional price spreads, cracks and
+              time spreads.
+            </p>
+            <p class="note">
+              This project led directly to a quantitative research role at DRW.
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <span class="num">5 yrs</span
+                ><span class="lbl">air-traffic history</span>
+              </div>
+              <div class="stat">
+                <span class="num">50</span
+                ><span class="lbl">airports modeled</span>
+              </div>
+              <div class="stat">
+                <span class="num">5</span><span class="lbl">PADD regions</span>
+              </div>
+            </div>
+            <div class="chips">
+              <span class="chip">Python</span><span class="chip">R</span
+              ><span class="chip">LASSO</span>
+              <span class="chip">OpenSky API</span><span class="chip">EIA</span
+              ><span class="chip">Bloomberg</span>
+            </div>
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://github.com/MosesRahnama/regional-jet-fuel-arbitrage"
+                target="_blank"
+                rel="noopener"
+                >View repository</a
+              >
+            </div>
+          </div>
+
+          <div class="card pro">
+            <h3>
+              <a
+                href="assets/Moses-Rahnama-S-Oil-Short-Pitch-2019.pdf"
+                target="_blank"
+                rel="noopener"
+                >S-Oil (010950 KS): Institutional Short Pitch</a
+              >
+            </h3>
+            <div class="meta">
+              <span><span class="badge gold">2019</span></span>
+              <span>Equity Research · Refining &amp; Petrochemicals</span>
+            </div>
+            <p>
+              A single-name short thesis on a Korean refiner ahead of IMO 2020,
+              arguing that the market had priced a regulatory windfall the
+              refining system had already adapted to. Built from physical-market
+              evidence, port bunker-fuel sales, inventory positioning, crude
+              quality differentials and turnaround schedules, then carried into
+              segment earnings, relative valuation and a sensitivity grid.
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <span class="num">13%</span
+                ><span class="lbl">below-consensus EBITDA call</span>
+              </div>
+              <div class="stat">
+                <span class="num">28%</span
+                ><span class="lbl">target return</span>
+              </div>
+              <div class="stat">
+                <span class="num">3</span
+                ><span class="lbl">segments modeled</span>
+              </div>
+            </div>
+            <div class="chips">
+              <span class="chip">Valuation</span
+              ><span class="chip">EV/EBITDA</span
+              ><span class="chip">Scenario Analysis</span>
+              <span class="chip">Refining Margins</span>
+            </div>
+            <div class="actions">
+              <a
+                class="btn"
+                href="assets/Moses-Rahnama-S-Oil-Short-Pitch-2019.pdf"
+                target="_blank"
+                rel="noopener"
+                >Read the pitch (PDF)</a
+              >
+            </div>
+          </div>
+
+          <div class="card pro">
+            <h3>Mina Analytics: Real Estate Model (REM)</h3>
+            <div class="meta">
+              <span><span class="badge gold">2023–</span></span>
+              <span>Co-founder &amp; CEO · Valuation Analytics</span>
+            </div>
+            <p>
+              A company built with Prof. Charles Calomiris to answer a question
+              the industry answers by instinct: what is a specific building
+              feature actually worth, in this location, at this moment. The
+              model isolates the revenue effect of amenities and green
+              certifications building by building, controlling for hundreds of
+              structural and locational variables. I built the data foundation
+              behind it, an extraction pipeline that assembled roughly three
+              times the building-level feature coverage of the largest
+              commercial data vendor.
+            </p>
+            <p class="note">
+              I directed the research program and built the data pipeline.
+              Methodology notes and market briefs below are by Charles Calomiris
+              and Jeremy Wu.
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <span class="num">80,000+</span
+                ><span class="lbl">buildings modeled</span>
+              </div>
+              <div class="stat">
+                <span class="num">10,000+</span
+                ><span class="lbl">candidate variables</span>
+              </div>
+              <div class="stat">
+                <span class="num">3×</span
+                ><span class="lbl">vendor feature coverage</span>
+              </div>
+            </div>
+            <div class="chips">
+              <span class="chip">Python</span><span class="chip">AWS</span
+              ><span class="chip">NLP Extraction</span>
+              <span class="chip">Forward Selection</span
+              ><span class="chip">Cross-Validation</span>
+            </div>
+            <details class="paper-drawer">
+              <summary>Read the papers (6 PDFs)</summary>
+              <ul class="paper-list">
+                <li class="paper-item">
+                  <div>
+                    <h4>Company primer</h4>
+                    <p>
+                      July 2025 briefing on Mina and the Real Estate Model.
+                    </p>
+                  </div>
+                  <a
+                    class="btn"
+                    href="assets/mina/mina-primer-july-2025.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >PDF</a
+                  >
+                </li>
+                <li class="paper-item">
+                  <div>
+                    <h4>REM Part 1. Model introduction</h4>
+                    <p>
+                      What REM is and the six findings the model produces.
+                    </p>
+                  </div>
+                  <a
+                    class="btn"
+                    href="assets/mina/rem-part-1-intro.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >PDF</a
+                  >
+                </li>
+                <li class="paper-item">
+                  <div>
+                    <h4>REM Part 2. Building the dataset</h4>
+                    <p>
+                      How building-level features are extracted from
+                      unstructured sources.
+                    </p>
+                  </div>
+                  <a
+                    class="btn"
+                    href="assets/mina/rem-part-2-dataset.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >PDF</a
+                  >
+                </li>
+                <li class="paper-item">
+                  <div>
+                    <h4>REM Part 3. Coverage and parsimony</h4>
+                    <p>
+                      Variable selection: enough coverage to measure effects
+                      without overfitting.
+                    </p>
+                  </div>
+                  <a
+                    class="btn"
+                    href="assets/mina/rem-part-3-coverage.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >PDF</a
+                  >
+                </li>
+                <li class="paper-item">
+                  <div>
+                    <h4>Garage parking, Florida and California</h4>
+                    <p>
+                      Whether a garage changes building revenue after location
+                      and structure are held fixed.
+                    </p>
+                  </div>
+                  <a
+                    class="btn"
+                    href="assets/mina/garage-parking-fl-ca.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >PDF</a
+                  >
+                </li>
+                <li class="paper-item">
+                  <div>
+                    <h4>Green buildings, Florida and California</h4>
+                    <p>
+                      LEED and Energy Star rent effects in Florida and
+                      California.
+                    </p>
+                  </div>
+                  <a
+                    class="btn"
+                    href="assets/mina/green-buildings-fl-ca.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >PDF</a
+                  >
+                </li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="research">
+        <div class="section-head">
+          <h2>Research Papers</h2>
+        </div>
+
+        <p class="lede">
+          An ongoing research program on the structural limits of formal
+          reasoning: the recurring situation where a system possesses a
+          property, yet that property cannot be witnessed, oriented, or
+          established by direct reasoning inside the system itself, so that
+          crossing the gap requires a representation shift or an external
+          mechanism. The work studies this boundary in a single terminating
+          system at the floor of computation, and traces the same phenomenon
+          across termination, logical expressibility and incompleteness, the
+          reasoning behavior of frontier AI systems, and confluence. Every
+          formal claim is mechanized and machine-checked in Lean 4, so the
+          barriers are proven rather than asserted.
         </p>
-        <p class="note">This project led directly to a quantitative research role at DRW.</p>
-        <div class="stats">
-          <div class="stat"><span class="num">5 yrs</span><span class="lbl">air-traffic history</span></div>
-          <div class="stat"><span class="num">50</span><span class="lbl">airports modeled</span></div>
-          <div class="stat"><span class="num">5</span><span class="lbl">PADD regions</span></div>
-        </div>
-        <div class="chips">
-          <span class="chip">Python</span><span class="chip">R</span><span class="chip">LASSO</span>
-          <span class="chip">OpenSky API</span><span class="chip">EIA</span><span class="chip">Bloomberg</span>
-        </div>
-        <div class="actions">
-          <a class="btn" href="https://github.com/MosesRahnama/regional-jet-fuel-arbitrage" target="_blank" rel="noopener">View repository</a>
-        </div>
-      </div>
 
-      <div class="card pro">
-        <h3><a href="assets/Moses-Rahnama-S-Oil-Short-Pitch-2019.pdf" target="_blank" rel="noopener">S-Oil (010950 KS) — Institutional Short Pitch</a></h3>
-        <div class="meta">
-          <span><span class="badge gold">2019</span></span>
-          <span>Equity Research · Refining &amp; Petrochemicals</span>
-        </div>
-        <p>
-          A single-name short thesis on a Korean refiner ahead of IMO 2020, arguing that the market had priced a
-          regulatory windfall the refining system had already adapted to. Built from physical-market evidence, port
-          bunker-fuel sales, inventory positioning, crude quality differentials and turnaround schedules, then carried
-          into segment earnings, relative valuation and a sensitivity grid.
-        </p>
-        <div class="stats">
-          <div class="stat"><span class="num">13%</span><span class="lbl">below-consensus EBITDA call</span></div>
-          <div class="stat"><span class="num">28%</span><span class="lbl">target return</span></div>
-          <div class="stat"><span class="num">3</span><span class="lbl">segments modeled</span></div>
-        </div>
-        <div class="chips">
-          <span class="chip">Valuation</span><span class="chip">EV/EBITDA</span><span class="chip">Scenario Analysis</span>
-          <span class="chip">Refining Margins</span>
-        </div>
-        <div class="actions">
-          <a class="btn" href="assets/Moses-Rahnama-S-Oil-Short-Pitch-2019.pdf" target="_blank" rel="noopener">Read the pitch (PDF)</a>
-        </div>
-      </div>
+        <div class="stack">
+          <div class="card res">
+            <h3>
+              <a
+                href="https://arxiv.org/abs/2512.00081"
+                target="_blank"
+                rel="noopener"
+                >The Orientation Boundary for Step-Duplicating Recursors:
+                Mechanized Impossibility, Escape, and Certification</a
+              >
+            </h3>
+            <div class="meta">
+              <span><span class="badge">arXiv</span> 2512.00081</span>
+              <span>Lean 4 · Term Rewriting · Termination Analysis</span>
+            </div>
+            <p>
+              Formalizes the orientation boundary for first-order
+              step-duplicating recursors. Proves that no measure in twelve
+              formalized direct classes can strictly orient the duplicating step
+              uniformly. Results are fully mechanized in Lean 4, constituting
+              the first mechanized object-level barrier theorem for a fixed
+              terminating system across multiple direct measure classes, proved
+              without reductions or undecidability arguments. Also isolates and
+              classifies escape routes within the direct universe.
+            </p>
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://github.com/MosesRahnama/The-Orientation-Boundary"
+                target="_blank"
+                rel="noopener"
+                >Lean artifact repository</a
+              >
+            </div>
+          </div>
 
-      <div class="card pro">
-        <h3><a href="https://minaanalytics.com/" target="_blank" rel="noopener">Mina Analytics — Real Estate Model (REM)</a></h3>
-        <div class="meta">
-          <span><span class="badge gold">2023–</span></span>
-          <span>Co-founder &amp; CEO · Valuation Analytics</span>
+          <div class="card res">
+            <h3>
+              <a
+                href="https://arxiv.org/abs/2604.22844"
+                target="_blank"
+                rel="noopener"
+                >Operational Inexpressibility at the Step-Duplicating Primitive
+                Recursor Orientation Boundary</a
+              >
+            </h3>
+            <div class="meta">
+              <span><span class="badge">arXiv</span> 2604.22844</span>
+              <span>April 2026</span>
+              <span>Term Rewriting · Proof Theory · Structural Barriers</span>
+            </div>
+            <p>
+              Identifies a structural property of term-rewriting proof systems
+              called <em>operational inexpressibility</em>: no derivation
+              depends on a specified input dimension and also constrains the
+              target question. Proves the canonical instance arises at the
+              primitive recursion duplicator, where under any direct whole-term
+              measure the recursor's mass profile coincides with that of a true
+              circular reference. Connects the boundary to the
+              Feferman–Beklemishev reflection family and recovers a structural
+              identity with Gödel 1931 as a specialization.
+            </p>
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://github.com/MosesRahnama/The-Orientation-Boundary"
+                target="_blank"
+                rel="noopener"
+                >Lean artifact repository</a
+              >
+            </div>
+          </div>
+
+          <div class="card res">
+            <h3>
+              <a
+                href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939"
+                target="_blank"
+                rel="noopener"
+                >The Confluence-Preservation Boundary for Diagonal Identity
+                Queries: Non-Left-Linearity, Signature Inexpressibility, and
+                External Guarding</a
+              >
+            </h3>
+            <div class="meta">
+              <span><span class="badge">SSRN</span> 10.2139/ssrn.7037939</span>
+              <span>July 2026</span>
+              <span
+                >Term Rewriting · Confluence Theory · Structural Barriers</span
+              >
+            </div>
+            <p>
+              Identifies the <em>Distinction Boundary</em>, the confluence-axis
+              companion to the orientation boundary: a non-left-linear reflexive
+              collapse rule overlapping a totalized difference rule produces a
+              non-joinable diagonal critical pair, the rewriting form of
+              equality reflection. Proves the disequality guard is
+              signature-inexpressible in the KO7 kernel, that the unguarded
+              relation loses confluence uniquely at the closed witness eqW(void,
+              void), and that the guarded relation <em>SafeStep</em> is globally
+              confluent once the guard is imported as an external license.
+              Extends the mechanism to a general diagonal-fork schema and traces
+              its cost-side duality with Operational Inexpressibility.
+            </p>
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://github.com/MosesRahnama/The-Orientation-Boundary"
+                target="_blank"
+                rel="noopener"
+                >Lean artifact repository</a
+              >
+            </div>
+          </div>
+
+          <div class="card res">
+            <h3>
+              <a
+                href="https://zenodo.org/records/20034530"
+                target="_blank"
+                rel="noopener"
+                >Failing at the Floor: The Primitive Recursor Test and the
+                Representation-Shift Bottleneck</a
+              >
+            </h3>
+            <div class="meta">
+              <span
+                ><span class="badge green">Zenodo</span>
+                10.5281/zenodo.20034530</span
+              >
+              <span>May 2026 · v4</span>
+              <span>LLM Benchmarking · Formal Reasoning</span>
+            </div>
+            <p>
+              Introduces the <em>Primitive Recursor Test</em> (PRT), a 30-model,
+              3,120-session benchmark over ten task families, graded on
+              termination verdict, mathematical adequacy, and
+              boundary-admissibility. On the KO7 kernel (TTT2-certified in 0.06
+              seconds), 58/480 (12.1%) of sessions claimed the system does not
+              terminate, only 1/480 (0.2%) retrieved the correct
+              transformed-call witness, and 368/480 (76.7%) of the answers were
+              outright mathematically false. Establishes a representation-shift
+              bottleneck as a fundamental barrier to direct measure reasoning in
+              frontier LLMs.
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <span class="num">30</span
+                ><span class="lbl">frontier models</span>
+              </div>
+              <div class="stat">
+                <span class="num">3,120</span
+                ><span class="lbl">graded sessions</span>
+              </div>
+              <div class="stat">
+                <span class="num">76.7%</span
+                ><span class="lbl">answers false</span>
+              </div>
+            </div>
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://github.com/MosesRahnama/PRT-Benchmark-Mirror"
+                target="_blank"
+                rel="noopener"
+                >PRT-Benchmark repository</a
+              >
+            </div>
+          </div>
         </div>
-        <p>
-          A company built with Prof. Charles Calomiris to answer a question the industry answers by instinct: what is a
-          specific building feature actually worth, in this location, at this moment. The model isolates the revenue
-          effect of amenities and green certifications building by building, controlling for hundreds of structural and
-          locational variables. I built the data foundation behind it, an extraction pipeline that assembled roughly three
-          times the building-level feature coverage of the largest commercial data vendor.
-        </p>
-        <p class="note">Research program directed by me; published methodology articles are authored by Charles Calomiris
-          and Jeremy Wu.</p>
-        <div class="stats">
-          <div class="stat"><span class="num">80,000+</span><span class="lbl">buildings modeled</span></div>
-          <div class="stat"><span class="num">10,000+</span><span class="lbl">candidate variables</span></div>
-          <div class="stat"><span class="num">3×</span><span class="lbl">vendor feature coverage</span></div>
+      </section>
+
+      <section id="media">
+        <div class="section-head">
+          <h2>In the Media</h2>
+          <p>
+            Commentary written for and quoted in the financial press, from
+            global gas and LNG at Energy Aspects through private markets at
+            Preqin and real-estate analytics at Mina.
+          </p>
         </div>
-        <div class="chips">
-          <span class="chip">Python</span><span class="chip">AWS</span><span class="chip">NLP Extraction</span>
-          <span class="chip">Forward Selection</span><span class="chip">Cross-Validation</span>
+
+        <div class="stack">
+          <div class="card pro">
+            <div class="meta">
+              <span class="outlet">Financial Times · Opinion</span>
+              <span>2015</span>
+              <span>Written by Moses Rahnama</span>
+            </div>
+            <h3>
+              <a
+                href="https://www.ft.com/content/c5f0dbb4-3f60-11e5-b98b-87c7270955cf"
+                target="_blank"
+                rel="noopener"
+                >Iran faces hurdles in supplying gas to Europe</a
+              >
+            </h3>
+            <blockquote class="quote">
+              “Tehran may be too optimistic in hoping continent could be major
+              export market in years to come.”
+            </blockquote>
+            <p class="attrib">
+              An op-ed on Iranian gas export prospects after the nuclear deal,
+              written as a second-year analyst at Energy Aspects.
+            </p>
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://www.ft.com/content/c5f0dbb4-3f60-11e5-b98b-87c7270955cf"
+                target="_blank"
+                rel="noopener"
+                >Read in the FT</a
+              >
+            </div>
+          </div>
+
+          <div class="card pro">
+            <div class="meta">
+              <span class="outlet">Forbes</span>
+              <span>7 July 2023</span>
+              <span>Green Buildings · Real-Estate Value</span>
+            </div>
+            <h3>
+              <a
+                href="https://www.forbes.com/sites/zengernews/2023/07/07/advanced-glazings-leads-public-spaces-renewal-with-daylighting-science/"
+                target="_blank"
+                rel="noopener"
+                >Advanced Glazings Leads Public Spaces Renewal With Daylighting
+                Science</a
+              >
+            </h3>
+            <blockquote class="quote">
+              “Buildings with higher energy efficiency are attracting greater
+              market prices, however, they also require increased investments.
+              Energy conservation stands out as the most effective strategy to
+              minimize the carbon footprint of real estate assets, while also
+              generating a financial return.”
+            </blockquote>
+            <p class="attrib">Quoted as CEO and founder of Mina Analytics.</p>
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://www.forbes.com/sites/zengernews/2023/07/07/advanced-glazings-leads-public-spaces-renewal-with-daylighting-science/"
+                target="_blank"
+                rel="noopener"
+                >Read on Forbes</a
+              >
+            </div>
+          </div>
+
+          <div class="card pro">
+            <div class="meta">
+              <span class="outlet">The Wall Street Journal</span>
+              <span>1 February 2023</span>
+              <span>Private Capital · Natural Resources</span>
+            </div>
+            <h3>
+              <a
+                href="https://www.wsj.com/articles/financial-services-roundup-market-talk-11675261207"
+                target="_blank"
+                rel="noopener"
+                >Financial Services Roundup: Market Talk</a
+              >
+            </h3>
+            <blockquote class="quote">
+              Record cash distributions from natural-resources funds have
+              investors “cautiously warming up to this asset class.”
+            </blockquote>
+            <p class="attrib">
+              Moses Rahnama, Preqin's assistant vice-president for research
+              insights, on dry powder in natural-resources private-capital funds
+              falling to 15.5% of total assets in Q4 2022, a record low, as 150
+              funds came to market seeking $41.2bn. Reported by Luis Garcia.
+            </p>
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://www.wsj.com/articles/financial-services-roundup-market-talk-11675261207"
+                target="_blank"
+                rel="noopener"
+                >Read in the WSJ</a
+              >
+            </div>
+          </div>
+
+          <div class="card pro">
+            <div class="meta">
+              <span class="outlet">Bloomberg</span>
+              <span>12 January 2016</span>
+              <span>Global LNG · US Exports</span>
+            </div>
+            <h3>
+              <a
+                href="https://gcaptain.com/tugboats-left-useless-find-work-in-u-s-lng-exports/"
+                target="_blank"
+                rel="noopener"
+                >Tugboats Left Useless by the Shale Boom Finally Have a Job to
+                Do</a
+              >
+            </h3>
+            <blockquote class="quote">
+              The global LNG surplus is set to triple by 2020 amid a “big wave”
+              of new capacity, while demand has slowed and many buyers are
+              trying to renegotiate contracts.
+            </blockquote>
+            <p class="attrib">
+              Moses Rahnama, analyst at Energy Aspects, on the LNG outlook as
+              America's first shale-gas export cargo left Sabine Pass. Reported
+              by Naureen S. Malik, Bloomberg News.
+            </p>
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://www.bloomberg.com/professional/blog/tugboats-left-useless-by-u-s-shale-boom-finally-have-job-to-do/"
+                target="_blank"
+                rel="noopener"
+                >Read on Bloomberg</a
+              >
+              <a
+                class="btn"
+                href="https://gcaptain.com/tugboats-left-useless-find-work-in-u-s-lng-exports/"
+                target="_blank"
+                rel="noopener"
+                >Free syndicated copy</a
+              >
+            </div>
+          </div>
+
+          <div class="card pro">
+            <div class="meta">
+              <span class="outlet">Bloomberg</span>
+              <span>11 March 2015</span>
+              <span>US Natural Gas · Shale Economics</span>
+            </div>
+            <h3>
+              <a
+                href="https://www.bloomberg.com/news/articles/2015-03-11/haynesville-shale-gas-cost-cuts-lure-drillers-from-marcellus"
+                target="_blank"
+                rel="noopener"
+                >Haynesville Shale Gas Cost Cuts Lure Drillers From Marcellus</a
+              >
+            </h3>
+            <blockquote class="quote">
+              “The break-even cost for new Haynesville gas wells has fallen to
+              about $2.30 to $2.40 per million Btu from $4 two years ago.”
+            </blockquote>
+            <p class="attrib">
+              Moses Rahnama, analyst at Energy Aspects, quoted throughout on
+              Haynesville economics and the pull of a Gulf Coast market opening
+              to LNG exports.
+            </p>
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://www.bloomberg.com/news/articles/2015-03-11/haynesville-shale-gas-cost-cuts-lure-drillers-from-marcellus"
+                target="_blank"
+                rel="noopener"
+                >Read on Bloomberg</a
+              >
+              <a
+                class="btn"
+                href="https://egyptoil-gas.com/news/haynesville-shale-gas-makes-a-comback-after-low-drilling-costs/"
+                target="_blank"
+                rel="noopener"
+                >Free syndicated copy</a
+              >
+            </div>
+          </div>
+
+          <div class="card pro">
+            <div class="meta">
+              <span class="outlet">Also</span>
+            </div>
+            <h3>Research Volume and Conference Panels</h3>
+            <p>
+              More than 500 institutional research notes on natural gas and LNG
+              published at Energy Aspects, and, as AVP of Research Insights at
+              Preqin, panels on alternative assets at SuperReturn, LPGP Connect
+              and Fund Finance Association events.
+            </p>
+          </div>
         </div>
-        <div class="actions">
-          <a class="btn" href="https://minaanalytics.com/" target="_blank" rel="noopener">Company site</a>
+      </section>
+
+      <section id="repos">
+        <div class="section-head">
+          <h2>Open-Source Repositories</h2>
         </div>
-      </div>
 
-    </div>
-  </section>
+        <div class="grid">
+          <div class="card res">
+            <h3>
+              <a
+                href="https://github.com/MosesRahnama/The-Orientation-Boundary"
+                target="_blank"
+                rel="noopener"
+                >The-Orientation-Boundary</a
+              >
+            </h3>
+            <div class="meta"><span>Lean 100%</span><span>Public</span></div>
+            <p>
+              Lean 4 companion artifact for the orientation-boundary papers: the
+              full mechanized formalization of the impossibility theorems,
+              escape characterizations, and certification chain for the KO7
+              witness system.
+            </p>
+          </div>
 
-  <section id="research">
-    <div class="section-head">
-      <h2>Research Papers</h2>
-    </div>
+          <div class="card res">
+            <h3>
+              <a
+                href="https://github.com/MosesRahnama/PRT-Benchmark-Mirror"
+                target="_blank"
+                rel="noopener"
+                >PRT-Benchmark-Mirror</a
+              >
+            </h3>
+            <div class="meta">
+              <span>Lean · Python</span><span>Public</span>
+            </div>
+            <p>
+              Full data release for <em>Failing at the Floor</em>: session data,
+              test files, prompts, Lean artifacts and TTT2 artifacts across 30
+              frontier models and 3,120 sessions, with a Croissant 1.0 metadata
+              file, datasheet, data statement and citation file.
+            </p>
+          </div>
 
-    <p class="lede">
-      An ongoing research program on the structural limits of formal reasoning: the recurring situation where a system
-      possesses a property, yet that property cannot be witnessed, oriented, or established by direct reasoning inside the
-      system itself, so that crossing the gap requires a representation shift or an external mechanism. The work studies
-      this boundary in a single terminating system at the floor of computation, and traces the same phenomenon across
-      termination, logical expressibility and incompleteness, the reasoning behavior of frontier AI systems, and
-      confluence. Every formal claim is mechanized and machine-checked in Lean 4, so the barriers are proven rather than
-      asserted.
-    </p>
-
-    <div class="stack">
-
-      <div class="card res">
-        <h3><a href="https://arxiv.org/abs/2512.00081" target="_blank" rel="noopener">The Orientation Boundary for Step-Duplicating Recursors: Mechanized Impossibility, Escape, and Certification</a></h3>
-        <div class="meta">
-          <span><span class="badge">arXiv</span> 2512.00081</span>
-          <span>Lean 4 · Term Rewriting · Termination Analysis</span>
+          <div class="card pro">
+            <h3>
+              <a
+                href="https://github.com/MosesRahnama/regional-jet-fuel-arbitrage"
+                target="_blank"
+                rel="noopener"
+                >regional-jet-fuel-arbitrage</a
+              >
+            </h3>
+            <div class="meta"><span>Python · R</span><span>Public</span></div>
+            <p>
+              Nowcasting US jet-fuel demand from air-traffic data and EIA
+              balances, with a LASSO model for regional jet-fuel spreads across
+              New York, Los Angeles and the Gulf Coast.
+            </p>
+          </div>
         </div>
-        <p>
-          Formalizes the orientation boundary for first-order step-duplicating recursors. Proves that no measure in twelve
-          formalized direct classes can strictly orient the duplicating step uniformly. Results are fully mechanized in
-          Lean 4, constituting the first mechanized object-level barrier theorem for a fixed terminating system across
-          multiple direct measure classes, proved without reductions or undecidability arguments. Also isolates and
-          classifies escape routes within the direct universe.
-        </p>
-        <div class="actions">
-          <a class="btn" href="https://github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact repository</a>
-        </div>
-      </div>
+      </section>
+    </main>
 
-      <div class="card res">
-        <h3><a href="https://arxiv.org/abs/2604.22844" target="_blank" rel="noopener">Operational Inexpressibility at the Step-Duplicating Primitive Recursor Orientation Boundary</a></h3>
-        <div class="meta">
-          <span><span class="badge">arXiv</span> 2604.22844</span>
-          <span>April 2026</span>
-          <span>Term Rewriting · Proof Theory · Structural Barriers</span>
-        </div>
-        <p>
-          Identifies a structural property of term-rewriting proof systems called <em>operational inexpressibility</em>: no
-          derivation depends on a specified input dimension and also constrains the target question. Proves the canonical
-          instance arises at the primitive recursion duplicator, where under any direct whole-term measure the recursor's
-          mass profile coincides with that of a true circular reference. Connects the boundary to the
-          Feferman–Beklemishev reflection family and recovers a structural identity with Gödel 1931 as a specialization.
-        </p>
-        <div class="actions">
-          <a class="btn" href="https://github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact repository</a>
-        </div>
-      </div>
-
-      <div class="card res">
-        <h3><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939" target="_blank" rel="noopener">The Confluence-Preservation Boundary for Diagonal Identity Queries: Non-Left-Linearity, Signature Inexpressibility, and External Guarding</a></h3>
-        <div class="meta">
-          <span><span class="badge">SSRN</span> 10.2139/ssrn.7037939</span>
-          <span>July 2026</span>
-          <span>Term Rewriting · Confluence Theory · Structural Barriers</span>
-        </div>
-        <p>
-          Identifies the <em>Distinction Boundary</em>, the confluence-axis companion to the orientation boundary: a
-          non-left-linear reflexive collapse rule overlapping a totalized difference rule produces a non-joinable diagonal
-          critical pair, the rewriting form of equality reflection. Proves the disequality guard is signature-inexpressible
-          in the KO7 kernel, that the unguarded relation loses confluence uniquely at the closed witness eqW(void, void),
-          and that the guarded relation <em>SafeStep</em> is globally confluent once the guard is imported as an external
-          license. Extends the mechanism to a general diagonal-fork schema and traces its cost-side duality with
-          Operational Inexpressibility.
-        </p>
-        <div class="actions">
-          <a class="btn" href="https://github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact repository</a>
-        </div>
-      </div>
-
-      <div class="card res">
-        <h3><a href="https://zenodo.org/records/20034530" target="_blank" rel="noopener">Failing at the Floor: The Primitive Recursor Test and the Representation-Shift Bottleneck</a></h3>
-        <div class="meta">
-          <span><span class="badge green">Zenodo</span> 10.5281/zenodo.20034530</span>
-          <span>May 2026 · v4</span>
-          <span>LLM Benchmarking · Formal Reasoning</span>
-        </div>
-        <p>
-          Introduces the <em>Primitive Recursor Test</em> (PRT), a 30-model, 3,120-session benchmark over ten task
-          families, graded on termination verdict, mathematical adequacy, and boundary-admissibility. On the KO7 kernel
-          (TTT2-certified in 0.06 seconds), 58/480 (12.1%) of sessions claimed the system does not terminate, only 1/480
-          (0.2%) retrieved the correct transformed-call witness, and 368/480 (76.7%) of the answers were outright
-          mathematically false. Establishes a representation-shift bottleneck as a fundamental barrier to direct measure
-          reasoning in frontier LLMs.
-        </p>
-        <div class="stats">
-          <div class="stat"><span class="num">30</span><span class="lbl">frontier models</span></div>
-          <div class="stat"><span class="num">3,120</span><span class="lbl">graded sessions</span></div>
-          <div class="stat"><span class="num">76.7%</span><span class="lbl">answers false</span></div>
-        </div>
-        <div class="actions">
-          <a class="btn" href="https://github.com/MosesRahnama/PRT-Benchmark-Mirror" target="_blank" rel="noopener">PRT-Benchmark repository</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="media">
-    <div class="section-head">
-      <h2>In the Media</h2>
-      <p>Commentary written for and quoted in the financial press, from global gas and LNG at Energy Aspects through
-         private markets at Preqin and real-estate analytics at Mina.</p>
-    </div>
-
-    <div class="stack">
-
-      <div class="card pro">
-        <div class="meta">
-          <span class="outlet">Financial Times · Opinion</span>
-          <span>2015</span>
-          <span>Written by Moses Rahnama</span>
-        </div>
-        <h3><a href="https://www.ft.com/content/c5f0dbb4-3f60-11e5-b98b-87c7270955cf" target="_blank" rel="noopener">Iran faces hurdles in supplying gas to Europe</a></h3>
-        <blockquote class="quote">
-          “Tehran may be too optimistic in hoping continent could be major export market in years to come.”
-        </blockquote>
-        <p class="attrib">An op-ed on Iranian gas export prospects after the nuclear deal, written as a second-year
-          analyst at Energy Aspects.</p>
-        <div class="actions">
-          <a class="btn" href="https://www.ft.com/content/c5f0dbb4-3f60-11e5-b98b-87c7270955cf" target="_blank" rel="noopener">Read in the FT</a>
-        </div>
-      </div>
-
-      <div class="card pro">
-        <div class="meta">
-          <span class="outlet">Forbes</span>
-          <span>7 July 2023</span>
-          <span>Green Buildings · Real-Estate Value</span>
-        </div>
-        <h3><a href="https://www.forbes.com/sites/zengernews/2023/07/07/advanced-glazings-leads-public-spaces-renewal-with-daylighting-science/" target="_blank" rel="noopener">Advanced Glazings Leads Public Spaces Renewal With Daylighting Science</a></h3>
-        <blockquote class="quote">
-          “Buildings with higher energy efficiency are attracting greater market prices, however, they also require
-          increased investments. Energy conservation stands out as the most effective strategy to minimize the carbon
-          footprint of real estate assets, while also generating a financial return.”
-        </blockquote>
-        <p class="attrib">Quoted as CEO and founder of Mina Analytics.</p>
-        <div class="actions">
-          <a class="btn" href="https://www.forbes.com/sites/zengernews/2023/07/07/advanced-glazings-leads-public-spaces-renewal-with-daylighting-science/" target="_blank" rel="noopener">Read on Forbes</a>
-        </div>
-      </div>
-
-      <div class="card pro">
-        <div class="meta">
-          <span class="outlet">The Wall Street Journal</span>
-          <span>1 February 2023</span>
-          <span>Private Capital · Natural Resources</span>
-        </div>
-        <h3><a href="https://www.wsj.com/articles/financial-services-roundup-market-talk-11675261207" target="_blank" rel="noopener">Financial Services Roundup: Market Talk</a></h3>
-        <blockquote class="quote">
-          Record cash distributions from natural-resources funds have investors “cautiously warming up to this asset
-          class.”
-        </blockquote>
-        <p class="attrib">Moses Rahnama, Preqin's assistant vice-president for research insights, on dry powder in
-          natural-resources private-capital funds falling to 15.5% of total assets in Q4 2022, a record low, as 150 funds
-          came to market seeking $41.2bn. Reported by Luis Garcia.</p>
-        <div class="actions">
-          <a class="btn" href="https://www.wsj.com/articles/financial-services-roundup-market-talk-11675261207" target="_blank" rel="noopener">Read in the WSJ</a>
-        </div>
-      </div>
-
-      <div class="card pro">
-        <div class="meta">
-          <span class="outlet">Bloomberg</span>
-          <span>12 January 2016</span>
-          <span>Global LNG · US Exports</span>
-        </div>
-        <h3><a href="https://gcaptain.com/tugboats-left-useless-find-work-in-u-s-lng-exports/" target="_blank" rel="noopener">Tugboats Left Useless by the Shale Boom Finally Have a Job to Do</a></h3>
-        <blockquote class="quote">
-          The global LNG surplus is set to triple by 2020 amid a “big wave” of new capacity, while demand has slowed and
-          many buyers are trying to renegotiate contracts.
-        </blockquote>
-        <p class="attrib">Moses Rahnama, analyst at Energy Aspects, on the LNG outlook as America's first shale-gas
-          export cargo left Sabine Pass. Reported by Naureen S. Malik, Bloomberg News.</p>
-        <div class="actions">
-          <a class="btn" href="https://www.bloomberg.com/professional/blog/tugboats-left-useless-by-u-s-shale-boom-finally-have-job-to-do/" target="_blank" rel="noopener">Read on Bloomberg</a>
-          <a class="btn" href="https://gcaptain.com/tugboats-left-useless-find-work-in-u-s-lng-exports/" target="_blank" rel="noopener">Free syndicated copy</a>
-        </div>
-      </div>
-
-      <div class="card pro">
-        <div class="meta">
-          <span class="outlet">Bloomberg</span>
-          <span>11 March 2015</span>
-          <span>US Natural Gas · Shale Economics</span>
-        </div>
-        <h3><a href="https://www.bloomberg.com/news/articles/2015-03-11/haynesville-shale-gas-cost-cuts-lure-drillers-from-marcellus" target="_blank" rel="noopener">Haynesville Shale Gas Cost Cuts Lure Drillers From Marcellus</a></h3>
-        <blockquote class="quote">
-          “The break-even cost for new Haynesville gas wells has fallen to about $2.30 to $2.40 per million Btu from $4
-          two years ago.”
-        </blockquote>
-        <p class="attrib">Moses Rahnama, analyst at Energy Aspects, quoted throughout on Haynesville economics and the
-          pull of a Gulf Coast market opening to LNG exports.</p>
-        <div class="actions">
-          <a class="btn" href="https://www.bloomberg.com/news/articles/2015-03-11/haynesville-shale-gas-cost-cuts-lure-drillers-from-marcellus" target="_blank" rel="noopener">Read on Bloomberg</a>
-          <a class="btn" href="https://egyptoil-gas.com/news/haynesville-shale-gas-makes-a-comback-after-low-drilling-costs/" target="_blank" rel="noopener">Free syndicated copy</a>
-        </div>
-      </div>
-
-      <div class="card pro">
-        <div class="meta">
-          <span class="outlet">Also</span>
-        </div>
-        <h3>Research Volume and Conference Panels</h3>
-        <p>
-          More than 500 institutional research notes on natural gas and LNG published at Energy Aspects, and, as AVP of
-          Research Insights at Preqin, panels on alternative assets at SuperReturn, LPGP Connect and Fund Finance
-          Association events.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="repos">
-    <div class="section-head">
-      <h2>Open-Source Repositories</h2>
-    </div>
-
-    <div class="grid">
-
-      <div class="card res">
-        <h3><a href="https://github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">The-Orientation-Boundary</a></h3>
-        <div class="meta"><span>Lean 100%</span><span>Public</span></div>
-        <p>Lean 4 companion artifact for the orientation-boundary papers: the full mechanized formalization of the
-           impossibility theorems, escape characterizations, and certification chain for the KO7 witness system.</p>
-      </div>
-
-      <div class="card res">
-        <h3><a href="https://github.com/MosesRahnama/PRT-Benchmark-Mirror" target="_blank" rel="noopener">PRT-Benchmark-Mirror</a></h3>
-        <div class="meta"><span>Lean · Python</span><span>Public</span></div>
-        <p>Full data release for <em>Failing at the Floor</em>: session data, test files, prompts, Lean artifacts and TTT2
-           artifacts across 30 frontier models and 3,120 sessions, with a Croissant 1.0 metadata file, datasheet, data
-           statement and citation file.</p>
-      </div>
-
-      <div class="card pro">
-        <h3><a href="https://github.com/MosesRahnama/regional-jet-fuel-arbitrage" target="_blank" rel="noopener">regional-jet-fuel-arbitrage</a></h3>
-        <div class="meta"><span>Python · R</span><span>Public</span></div>
-        <p>Nowcasting US jet-fuel demand from air-traffic data and EIA balances, with a LASSO model for regional jet-fuel
-           spreads across New York, Los Angeles and the Gulf Coast.</p>
-      </div>
-
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <p>Moses Rahnama · moses.rahnama@gmail.com · <a href="https://github.com/MosesRahnama">github.com/MosesRahnama</a></p>
-  <p class="disclaimer">Materials on this page are personal work products shared for professional reference. The 2019
-     equity pitch is a historical case study and is not investment advice or a current view on any security.</p>
-</footer>
-
-</body>
+    <footer>
+      <p>
+        Moses Rahnama · moses.rahnama@gmail.com ·
+        <a href="https://github.com/MosesRahnama">github.com/MosesRahnama</a>
+      </p>
+      <p class="disclaimer">
+        Materials on this page are personal work products shared for
+        professional reference. The 2019 equity pitch is a historical case study
+        and is not investment advice or a current view on any security.
+      </p>
+    </footer>
+  </body>
 </html>
