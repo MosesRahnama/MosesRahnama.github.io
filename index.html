@@ -820,53 +820,68 @@
           <div class="card pro">
             <h3>
               <a
-                href="https://github.com/MosesRahnama/regional-jet-fuel-arbitrage"
+                href="https://mosesrahnama.github.io/regional-jet-fuel-arbitrage/"
                 target="_blank"
                 rel="noopener"
-                >Regional Jet-Fuel Spreads During COVID</a
+                >Regional Jet-Fuel Spreads: Fundamentals Fair Value</a
               >
             </h3>
             <div class="meta">
-              <span><span class="badge gold">2020</span></span>
-              <span>Commodity Modeling · Alternative Data</span>
+              <span><span class="badge gold">2020 · 2026</span></span>
+              <span>Commodity Modeling · Time Series · Alternative Data</span>
             </div>
             <p>
-              A fundamentals-to-price model for US jet fuel built during the
-              COVID demand collapse. Daily regional demand is nowcast from live
-              air-traffic data, miles flown out of the 50 busiest airports, then
-              carried through PADD-level supply and demand balances and into a
-              variable-selection model for regional price spreads, cracks and
-              time spreads.
+              A fundamentals-to-price model for US regional jet-fuel spreads,
+              first built during the COVID demand collapse and rebuilt in 2026
+              as four research notebooks. Each week the model fits every spread
+              on the EIA stocks, refinery runs and jet output public at that
+              date, and trades the gap between price and fair value. OpenSky
+              miles flown give East and West Coast jet demand four days before
+              the EIA publishes it.
             </p>
             <p>
-              Demand is an OLS of PADD jet-fuel offtake on miles flown
-              (departures times average stage length) from OpenSky, then joined
-              to EIA weekly stocks and runs. A LASSO in R picks the covariates
-              for each New York, Los Angeles and Gulf Coast spread.
+              Spreads are selected with ADF and KPSS stationarity tests,
+              half-lives, principal components, VIF and Granger tests. A
+              3,240-regression open search with false-discovery control confirms
+              3 relationships out of sample, so the fair values use drivers
+              fixed in advance. On the three West Coast spreads the walk-forward
+              rule earns 28.8 c/gal a year from 2017 to February 2020 after
+              costs. Break-even cost is 0.74 c/gal per unit traded; regional jet
+              swap liquidity is outside the data and limits position size.
             </p>
             <p class="note">
               This project led directly to a quantitative research role at DRW.
             </p>
             <div class="stats">
               <div class="stat">
-                <span class="num">5 yrs</span
-                ><span class="lbl">air-traffic history</span>
+                <span class="num">1.50</span
+                ><span class="lbl">Sharpe · West Coast book</span>
               </div>
               <div class="stat">
-                <span class="num">50</span
-                ><span class="lbl">airports modeled</span>
+                <span class="num">28.8</span
+                ><span class="lbl">c/gal a year after costs</span>
               </div>
               <div class="stat">
-                <span class="num">5</span><span class="lbl">PADD regions</span>
+                <span class="num">0.74</span
+                ><span class="lbl">c/gal break-even cost</span>
               </div>
             </div>
             <div class="chips">
-              <span class="chip">Python</span><span class="chip">R</span
-              ><span class="chip">LASSO</span>
-              <span class="chip">OpenSky API</span><span class="chip">EIA</span
+              <span class="chip">Python</span><span class="chip">statsmodels</span
+              ><span class="chip">ADF / KPSS</span>
+              <span class="chip">PCA</span><span class="chip">Benjamini-Hochberg FDR</span
+              ><span class="chip">Walk-forward backtest</span>
+              <span class="chip">OpenSky</span><span class="chip">EIA</span
               ><span class="chip">Bloomberg</span>
             </div>
             <div class="actions">
+              <a
+                class="btn primary"
+                href="https://mosesrahnama.github.io/regional-jet-fuel-arbitrage/"
+                target="_blank"
+                rel="noopener"
+                >Open the interactive dashboard</a
+              >
               <a
                 class="btn"
                 href="https://github.com/MosesRahnama/regional-jet-fuel-arbitrage"
@@ -1535,11 +1550,11 @@
                 >regional-jet-fuel-arbitrage</a
               >
             </h3>
-            <div class="meta"><span>Python · R</span><span>Public</span></div>
+            <div class="meta"><span>Python · Jupyter</span><span>Public</span></div>
             <p>
-              Nowcasting US jet-fuel demand from air-traffic data and EIA
-              balances, with a LASSO model for regional jet-fuel spreads across
-              New York, Los Angeles and the Gulf Coast.
+              Weekly fair values for US regional jet-fuel spreads from EIA
+              balances, a walk-forward backtest, and an OpenSky air-traffic
+              nowcast of PADD jet demand, with an interactive dashboard.
             </p>
           </div>
         </div>
