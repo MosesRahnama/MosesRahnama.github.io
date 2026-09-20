@@ -876,7 +876,7 @@
                 data-goatcounter-click="out:mosesrahnama.github.io/regional-jet-fuel-arbitrage"
                 target="_blank"
                 rel="noopener"
-                >Regional Jet-Fuel Spreads: Fundamentals Fair Value</a
+                >Regional Jet-Fuel Spreads Arbitrage During COVID Shutdowns</a
               >
             </h3>
             <div class="meta">
@@ -884,36 +884,25 @@
               <span>Commodity Modeling · Time Series · Alternative Data</span>
             </div>
             <p>
-              Jet fuel costs different amounts in different places, and the gap
-              between two regions is tradable in a way the price itself is not.
-              Shipping fuel from the Gulf Coast to the West Coast costs a known
-              amount per gallon, and that freight cost holds the gap between a
-              ceiling and a floor, so it keeps coming back to the middle. The
-              price on its own follows crude oil and stays wherever crude leaves
-              it. I built this during the 2020 demand collapse and rebuilt it in
-              2026 as four research notebooks.
+              Jet fuel sells for different prices in Los Angeles and on the Gulf
+              Coast. The gap between them is steadier than either price alone,
+              because shipping fuel between the two costs a known amount and
+              that keeps the gap inside a band. I built this when COVID shut air
+              travel down and jet demand fell by 80 percent in a few weeks, and
+              rebuilt it in 2026 as four research notebooks.
             </p>
             <p>
-              Each week the model estimates what a spread should be worth from
-              the inventory and refinery figures the EIA had actually published
-              by that date, then takes a position on the gap between that
-              estimate and the market. Flight miles from OpenSky read regional
-              jet demand four days before the EIA prints it.
+              Each week the model works out what a gap should be worth from the
+              inventory and refinery figures that were public at the time, and
+              takes a position when the market has moved away from it. Flight
+              data reads regional jet demand four days before the government
+              publishes it.
             </p>
             <p>
-              The part worth reading is the search that failed. I tested 3,240
-              pairings of one spread against one physical driver. 264 cleared
-              the usual significance bar, but roughly 162 would clear it on
-              chance alone, and the pairings with the strongest evidence
-              survived a later period least often, 17 percent against 42 percent
-              for the weakest. That ordering runs backwards, which is what a
-              search finding nothing looks like, so none of its drivers went
-              into the model. The fair values use drivers fixed in advance on
-              physical reasoning instead. On the three West Coast spreads that
-              rule returned 43.4 c/gal a year from 2017 to February 2020. Those
-              figures are gross: bid-offer, fees and depth for these swaps sit
-              outside the dataset, so the break-even trading cost is the first
-              thing anyone should establish before calling this tradable.
+              Three West Coast spreads returned 43.4 cents per gallon a year
+              from 2017 to February 2020, before trading costs. The next step is
+              measuring the break-even cost, which takes bid-offer and depth
+              quotes from a broker.
             </p>
             <div class="stats">
               <div class="stat">
@@ -925,8 +914,8 @@
                 ><span class="lbl">c/gal a year, before costs</span>
               </div>
               <div class="stat">
-                <span class="num">3</span
-                ><span class="lbl">of 3,240 search tests confirmed</span>
+                <span class="num">163</span
+                ><span class="lbl">weeks tested, 2017 to Feb 2020</span>
               </div>
             </div>
             <div class="chips">
