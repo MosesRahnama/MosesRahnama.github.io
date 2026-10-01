@@ -652,6 +652,24 @@
         font-size: 0.62rem;
         padding: 0.08rem 0.4rem;
       }
+      .paper-blurb {
+        margin: 0.5rem 0 0;
+        max-width: 84ch;
+        font-size: 0.86rem;
+        line-height: 1.6;
+        color: var(--text);
+      }
+      .paper-blurb a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .paper-blurb a:hover {
+        text-decoration: underline;
+      }
+      .paper-blurb .rule {
+        font-family: var(--mono);
+        font-size: 0.92em;
+      }
       .paper-link {
         font-family: var(--mono);
         font-size: 0.72rem;
@@ -767,14 +785,55 @@
     <nav>
       <div class="nav-inner">
         <span class="nav-label">Jump to</span>
+        <a href="#research">Research Papers</a>
         <a href="#projects">Professional Projects</a>
         <a href="#media">In the Media</a>
-        <a href="#research">Research Papers</a>
         <a href="#repos">Repositories</a>
       </div>
     </nav>
 
     <main>
+      <section id="research">
+        <div class="section-head">
+          <h2>Research Papers</h2>
+          <p>Research on the limits of formal reasoning, mechanized in Lean 4.</p>
+        </div>
+        <ul class="papers">
+          <li class="paper">
+            <div>
+              <a class="paper-title" href="https://arxiv.org/abs/2512.00081" data-goatcounter-click="out:arxiv.org/abs/2512.00081" target="_blank" rel="noopener">The Orientation Boundary for Step-Duplicating Recursors: Mechanized Impossibility, Escape, and Certification</a>
+              <span class="paper-meta"><span class="badge">arXiv</span> 2512.00081 · v11, July 2026 · Lean 4 · Term Rewriting</span>
+              <p class="paper-blurb">The rule <span class="rule">recur(b, s, succ(n)) &rarr; wrap(s, recur(b, s, n))</span> copies its step argument and terminates. Take the direct measures built from the counter and the copied argument by constants, sums, products, maxima and scalar multiples. Lean 4 proves that such a measure orients the step if and only if it ignores the copied argument and increases with each counter step. Twelve measure families fail for this reason. Dependency pairs, a nonlinear polynomial and a multiset path order prove termination, and three TTT2 proofs carry CeTA certificates.</p>
+            </div>
+            <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact</a>
+          </li>
+          <li class="paper">
+            <div>
+              <a class="paper-title" href="https://arxiv.org/abs/2604.22844" data-goatcounter-click="out:arxiv.org/abs/2604.22844" target="_blank" rel="noopener">Observer Determinacy of Termination Certificates: Sufficient Statistics, Blackwell Comparison, and Simple Projections for Step-Duplicating Recursion</a>
+              <span class="paper-meta"><span class="badge">arXiv</span> 2604.22844 · v5, September 2026 · Lean 4 · Proof Theory</span>
+              <p class="paper-blurb">An observer licenses a target when the target is constant on the fibers of the observer. Licensing equals statistical sufficiency under deterministic observation and a full-support prior, and observer refinement equals deterministic Blackwell comparison. For the step-duplicating recursor, every orienting expression of the direct-measure grammar ignores the copied argument, and the counter observer licenses an orienting target outside that grammar.</p>
+            </div>
+            <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact</a>
+          </li>
+          <li class="paper">
+            <div>
+              <a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939" data-goatcounter-click="out:papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939" target="_blank" rel="noopener">Unique Normal Forms: Proof-Graph Counterexamples, Infinite-Carrier Certificates, and Confluence Repair</a>
+              <span class="paper-meta"><span class="badge">SSRN</span> 10.2139/ssrn.7037939 · July 2026 · Lean 4 · Unique Normal Forms</span>
+              <p class="paper-blurb"><a href="https://doi.org/10.4230/LIPIcs.FSCD.2016.22" data-goatcounter-click="out:doi.org/10.4230/LIPIcs.FSCD.2016.22" target="_blank" rel="noopener">Kahrs and Smith (FSCD 2016)</a> published a proof that non-&omega;-overlapping term rewriting systems have unique normal forms, answering Klop's problem 79. This paper gives a Lean-formalized counterexample to Lemma 64 of that proof: for the single rule <span class="rule">d(x) &rarr; x</span>, a complete targeted proof graph on three terms omits a rewrite equation. The refutation concerns that lemma and the printed proof of the theorem that uses it. Their constructor translation, consistency invariant and finite support are proved here, and the remaining route to the theorem reduces to transitivity of a restricted invariant. A second set of results constructs systems with unique normal forms whose overlap certificates require infinite carriers.</p>
+            </div>
+            <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact</a>
+          </li>
+          <li class="paper">
+            <div>
+              <a class="paper-title" href="https://zenodo.org/records/21420909" data-goatcounter-click="out:zenodo.org/records/21420909" target="_blank" rel="noopener">The Primitive Recursor Test: Construction-Recognition Gap and Representation-Shift Failure in Formal Reasoning</a>
+              <span class="paper-meta"><span class="badge green">Zenodo</span> 10.5281/zenodo.21420909 · September 2026 · LLM Benchmarking</span>
+              <p class="paper-blurb">PRT runs 30 language models through 4,160 sessions on termination of the primitive recursor, a two-rule system. Every answer is scored by fixed rules against TTT2/CeTA and Lean artifacts. On the two-rule system, 53.8% of sessions give no valid proof and 94.6% give no proof derived from the displayed rules alone. When the rule-derived method is placed on a five-method menu, the judgments of the models match the scored answer on both axes in 94.2% of sessions. Models recognize the method on a menu and do not construct it unaided.</p>
+            </div>
+            <a class="paper-link" href="https://github.com/MosesRahnama/PRT-Benchmark-Mirror" data-goatcounter-click="out:github.com/MosesRahnama/PRT-Benchmark-Mirror" target="_blank" rel="noopener">Benchmark repository</a>
+          </li>
+        </ul>
+      </section>
+
       <section id="projects">
         <div class="section-head">
           <h2>Professional Projects</h2>
@@ -1354,43 +1413,6 @@
             </p>
           </div>
         </div>
-      </section>
-
-      <section id="research">
-        <div class="section-head">
-          <h2>Research Papers</h2>
-          <p>Research on the limits of formal reasoning, mechanized in Lean 4.</p>
-        </div>
-        <ul class="papers">
-          <li class="paper">
-            <div>
-              <a class="paper-title" href="https://arxiv.org/abs/2512.00081" data-goatcounter-click="out:arxiv.org/abs/2512.00081" target="_blank" rel="noopener">The Orientation Boundary for Step-Duplicating Recursors: Mechanized Impossibility, Escape, and Certification</a>
-              <span class="paper-meta"><span class="badge">arXiv</span> 2512.00081 · Lean 4 · Term Rewriting</span>
-            </div>
-            <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact</a>
-          </li>
-          <li class="paper">
-            <div>
-              <a class="paper-title" href="https://arxiv.org/abs/2604.22844" data-goatcounter-click="out:arxiv.org/abs/2604.22844" target="_blank" rel="noopener">Operational Inexpressibility at the Step-Duplicating Primitive Recursor Orientation Boundary</a>
-              <span class="paper-meta"><span class="badge">arXiv</span> 2604.22844 · April 2026 · Proof Theory</span>
-            </div>
-            <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact</a>
-          </li>
-          <li class="paper">
-            <div>
-              <a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939" data-goatcounter-click="out:papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939" target="_blank" rel="noopener">Unique Normal Forms: Proof-Graph Counterexamples, Infinite-Carrier Certificates, and Confluence Repair</a>
-              <span class="paper-meta"><span class="badge">SSRN</span> 10.2139/ssrn.7037939 · July 2026 · Unique Normal Forms</span>
-            </div>
-            <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact</a>
-          </li>
-          <li class="paper">
-            <div>
-              <a class="paper-title" href="https://zenodo.org/records/20034530" data-goatcounter-click="out:zenodo.org/records/20034530" target="_blank" rel="noopener">Failing at the Floor: The Primitive Recursor Test and the Representation-Shift Bottleneck</a>
-              <span class="paper-meta"><span class="badge green">Zenodo</span> 10.5281/zenodo.20034530 · May 2026 · LLM Benchmarking</span>
-            </div>
-            <a class="paper-link" href="https://github.com/MosesRahnama/PRT-Benchmark-Mirror" data-goatcounter-click="out:github.com/MosesRahnama/PRT-Benchmark-Mirror" target="_blank" rel="noopener">Benchmark repository</a>
-          </li>
-        </ul>
       </section>
 
       <section id="repos">
