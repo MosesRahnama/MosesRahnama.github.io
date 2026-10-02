@@ -801,8 +801,8 @@
         <ul class="papers">
           <li class="paper">
             <div>
-              <a class="paper-title" href="https://arxiv.org/abs/2512.00081" data-goatcounter-click="out:arxiv.org/abs/2512.00081" target="_blank" rel="noopener">The Orientation Boundary for Step-Duplicating Recursors: Mechanized Impossibility, Escape, and Certification</a>
-              <span class="paper-meta"><span class="badge">arXiv</span> 2512.00081 · v11, July 2026 · Lean 4 · Term Rewriting</span>
+              <a class="paper-title" href="https://arxiv.org/abs/2512.00081" data-goatcounter-click="out:arxiv.org/abs/2512.00081" target="_blank" rel="noopener">The Orientation Boundary for Step-Duplicating Recursors: A Machine-Checked Structural Theory of Termination Proofs</a>
+              <span class="paper-meta"><span class="badge">arXiv</span> 2512.00081 · v12, September 2026 · Lean 4 · Term Rewriting</span>
               <p class="paper-blurb">The rule <span class="rule">recur(b, s, succ(n)) &rarr; wrap(s, recur(b, s, n))</span> copies its step argument and terminates. Take the direct measures built from the counter and the copied argument by constants, sums, products, maxima and scalar multiples. Lean 4 proves that such a measure orients the step if and only if it ignores the copied argument and increases with each counter step. Twelve measure families fail for this reason. Dependency pairs, a nonlinear polynomial and a multiset path order prove termination, and three TTT2 proofs carry CeTA certificates.</p>
             </div>
             <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact</a>
@@ -825,10 +825,11 @@
           </li>
           <li class="paper">
             <div>
-              <a class="paper-title" href="https://zenodo.org/records/21420909" data-goatcounter-click="out:zenodo.org/records/21420909" target="_blank" rel="noopener">The Primitive Recursor Test: Construction-Recognition Gap and Representation-Shift Failure in Formal Reasoning</a>
-              <span class="paper-meta"><span class="badge green">Zenodo</span> 10.5281/zenodo.21420909 · September 2026 · LLM Benchmarking</span>
-              <p class="paper-blurb">PRT runs 30 language models through 4,160 sessions on termination of the primitive recursor, a two-rule system. Every answer is scored by fixed rules against TTT2/CeTA and Lean artifacts. On the two-rule system, 53.8% of sessions give no valid proof and 94.6% give no proof derived from the displayed rules alone. When the rule-derived method is placed on a five-method menu, the judgments of the models match the scored answer on both axes in 94.2% of sessions. Models recognize the method on a menu and do not construct it unaided.</p>
+              <a class="paper-title" href="https://zenodo.org/records/23100845" data-goatcounter-click="out:zenodo.org/records/23100845" target="_blank" rel="noopener">The Primitive Recursor Test: Construction-Recognition Gap and Representation-Shift Failure in Formal Reasoning</a>
+              <span class="paper-meta"><span class="badge green">Zenodo</span> 10.5281/zenodo.23100845 · October 2026 · LLM Benchmarking</span>
+              <p class="paper-blurb">PRT runs 30 language models through 4,160 sessions on termination of the primitive recursor, a two-rule system. Every answer is scored by fixed rules against TTT2/CeTA and Lean artifacts. On the two-rule system, 64.6% of sessions give no valid proof and 99.2% give no proof derived from the displayed rules alone. When the rule-derived method is placed on a five-method menu, the judgments of the models match the scored answer on both axes in 94.2% of sessions. Models recognize the method on a menu and do not construct it unaided.</p>
             </div>
+            <a class="paper-link" href="https://github.com/MosesRahnama/The-Primitive-Recursor-Test" data-goatcounter-click="out:github.com/MosesRahnama/The-Primitive-Recursor-Test" target="_blank" rel="noopener">Data and code</a>
           </li>
         </ul>
       </section>
@@ -1436,6 +1437,25 @@
               full mechanized formalization of the impossibility theorems,
               escape characterizations, and certification chain for the KO7
               witness system.
+            </p>
+          </div>
+
+          <div class="card res">
+            <h3>
+              <a
+                href="https://github.com/MosesRahnama/The-Primitive-Recursor-Test"
+                data-goatcounter-click="out:github.com/MosesRahnama/The-Primitive-Recursor-Test"
+                target="_blank"
+                rel="noopener"
+                >The-Primitive-Recursor-Test</a
+              >
+            </h3>
+            <div class="meta"><span>Python · Lean</span><span>Public</span></div>
+            <p>
+              Data and scoring programs for the Primitive Recursor Test: every
+              prompt and all 4,160 sessions from 30 language models, the reader
+              records, the Python rulebook that decides each proof score, and
+              the Lean 4 and TTT2/CeTA evidence behind the answers.
             </p>
           </div>
 
