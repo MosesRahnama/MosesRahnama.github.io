@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="color-scheme" content="dark" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Moses Rahnama - Markets Research, Data & Formal Methods</title>
     <meta
@@ -78,6 +79,12 @@
         --gold: #0792e3;
         --gold-dim: #0792e322;
         --green: #4ec9a0;
+        --brand-linkedin: #4d9be6;
+        --brand-github: #e6edf3;
+        --brand-arxiv: #f0645c;
+        --brand-zenodo: #4ec9a0;
+        --brand-ssrn: #5b8fd6;
+        --brand-scholar: #7aa7f7;
         --radius: 12px;
         --maxw: min(1320px, 94vw);
         --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -89,24 +96,6 @@
           "Liberation Mono", monospace;
       }
 
-      @media (prefers-color-scheme: light) {
-        :root {
-          --bg: #fbfaf7;
-          --bg-soft: #f4f2ed;
-          --surface: #ffffff;
-          --surface-2: #f7f5f1;
-          --border: #e2ded5;
-          --border-hi: #c9c2b4;
-          --text: #3b4250;
-          --heading: #14171d;
-          --muted: #6d7484;
-          --accent: #2563c7;
-          --accent-dim: #2563c714;
-          --gold: #0a6ea8;
-          --gold-dim: #0a6ea814;
-          --green: #1a7f5f;
-        }
-      }
 
       * {
         box-sizing: border-box;
@@ -327,6 +316,24 @@
         }
       }
 
+      /* platform colours for the header links */
+      .contact a.svc-linkedin { --brand: var(--brand-linkedin); }
+      .contact a.svc-github { --brand: var(--brand-github); }
+      .contact a.svc-arxiv { --brand: var(--brand-arxiv); }
+      .contact a.svc-zenodo { --brand: var(--brand-zenodo); }
+      .contact a.svc-ssrn { --brand: var(--brand-ssrn); }
+      .contact a.svc-scholar { --brand: var(--brand-scholar); }
+      .contact a[href] {
+        color: var(--brand);
+        border-color: color-mix(in srgb, var(--brand) 45%, transparent);
+        background: color-mix(in srgb, var(--brand) 9%, var(--surface));
+      }
+      .contact a[href]:hover {
+        color: var(--brand);
+        border-color: var(--brand);
+        background: color-mix(in srgb, var(--brand) 18%, var(--surface));
+      }
+
       /* ---------- Layout ---------- */
       main {
         max-width: var(--maxw);
@@ -468,6 +475,14 @@
         background: var(--gold-dim);
         color: var(--gold);
         border-color: color-mix(in srgb, var(--gold) 38%, transparent);
+      }
+      .badge.arxiv { --brand: var(--brand-arxiv); }
+      .badge.ssrn { --brand: var(--brand-ssrn); }
+      .badge.zenodo { --brand: var(--brand-zenodo); }
+      .badge.arxiv, .badge.ssrn, .badge.zenodo {
+        color: var(--brand);
+        background: color-mix(in srgb, var(--brand) 13%, transparent);
+        border-color: color-mix(in srgb, var(--brand) 40%, transparent);
       }
       .badge.green {
         background: color-mix(in srgb, var(--green) 13%, transparent);
@@ -812,6 +827,7 @@
         <div class="contact">
           <span class="email">moses.rahnama@gmail.com</span>
           <a
+            class="svc-linkedin"
             href="https://www.linkedin.com/in/moses-rahnama/"
             data-goatcounter-click="out:www.linkedin.com/in/moses-rahnama"
             target="_blank"
@@ -819,6 +835,7 @@
             >LinkedIn</a
           >
           <a
+            class="svc-github"
             href="https://github.com/MosesRahnama"
             data-goatcounter-click="out:github.com/MosesRahnama"
             target="_blank"
@@ -826,6 +843,7 @@
             >GitHub</a
           >
           <a
+            class="svc-arxiv"
             href="https://arxiv.org/search/?searchtype=author&amp;query=Rahnama%2C+Moses"
             data-goatcounter-click="out:arxiv.org/search/?searchtype=author&amp;query=Rahnama%2C+Moses"
             target="_blank"
@@ -833,6 +851,7 @@
             >arXiv</a
           >
           <a
+            class="svc-zenodo"
             href="https://zenodo.org/search?q=Rahnama"
             data-goatcounter-click="out:zenodo.org/search?q=Rahnama"
             target="_blank"
@@ -840,6 +859,7 @@
             >Zenodo</a
           >
           <a
+            class="svc-ssrn"
             href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939"
             data-goatcounter-click="out:papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939"
             target="_blank"
@@ -847,6 +867,7 @@
             >SSRN</a
           >
           <a
+            class="svc-scholar"
             href="https://scholar.google.com/citations?user=bRBM708AAAAJ"
             data-goatcounter-click="out:scholar.google.com/citations?user=bRBM708AAAAJ"
             target="_blank"
@@ -1243,7 +1264,7 @@
           <li class="paper">
             <div>
               <a class="paper-title" href="https://arxiv.org/abs/2512.00081" data-goatcounter-click="out:arxiv.org/abs/2512.00081" target="_blank" rel="noopener">The Orientation Boundary for Step-Duplicating Recursors: A Machine-Checked Structural Theory of Termination Proofs</a>
-              <span class="paper-meta"><span class="badge">arXiv</span> 2512.00081 · v12, September 2026 · Lean 4 · Term Rewriting</span>
+              <span class="paper-meta"><span class="badge arxiv">arXiv</span> 2512.00081 · v12, September 2026 · Lean 4 · Term Rewriting</span>
               <p class="paper-blurb" id="paper-note-1">This paper establishes a machine-checked theoretical boundary for termination proofs of step-duplicating recursion in term rewriting systems. Formalized in Lean 4, the work proves an impossibility theorem across twelve standard measure families, demonstrating that direct syntactical measures fail precisely because they cannot incorporate duplicated step arguments without violating strict monotonicity. To resolve termination where direct interpretations fail, the paper constructs complete automated proof certificates utilizing dependency pairs, nonlinear polynomial interpretations, and multiset path orderings, verified via CeTA-certified TTT2 pipelines.</p>
               <button type="button" class="paper-toggle" aria-expanded="false" aria-controls="paper-note-1" hidden>Expand</button>
             </div>
@@ -1252,7 +1273,7 @@
           <li class="paper">
             <div>
               <a class="paper-title" href="https://arxiv.org/abs/2604.22844" data-goatcounter-click="out:arxiv.org/abs/2604.22844" target="_blank" rel="noopener">Observer Determinacy of Termination Certificates: Sufficient Statistics, Blackwell Comparison, and Simple Projections for Step-Duplicating Recursion</a>
-              <span class="paper-meta"><span class="badge">arXiv</span> 2604.22844 · v5, September 2026 · Lean 4 · Proof Theory</span>
+              <span class="paper-meta"><span class="badge arxiv">arXiv</span> 2604.22844 · v5, September 2026 · Lean 4 · Proof Theory</span>
               <p class="paper-blurb" id="paper-note-2">This work bridges proof theory and statistical decision theory by formalizing the concept of observer determinacy for termination certificates. It establishes an exact equivalence between licensing termination targets under deterministic observation and statistical sufficiency, mapping observer refinement directly to Blackwell comparison. Applied to step-duplicating recursors, the Lean 4 formalization demonstrates that orienting expressions necessarily project away duplicated arguments, providing a mathematical criterion for determining when lower-dimensional projections license valid termination certificates outside conventional direct-measure grammars.</p>
               <button type="button" class="paper-toggle" aria-expanded="false" aria-controls="paper-note-2" hidden>Expand</button>
             </div>
@@ -1261,7 +1282,7 @@
           <li class="paper">
             <div>
               <a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939" data-goatcounter-click="out:papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939" target="_blank" rel="noopener">Unique Normal Forms: Proof-Graph Counterexamples, Infinite-Carrier Certificates, and Confluence Repair</a>
-              <span class="paper-meta"><span class="badge">SSRN</span> 10.2139/ssrn.7037939 · July 2026 · Lean 4 · Unique Normal Forms</span>
+              <span class="paper-meta"><span class="badge ssrn">SSRN</span> 10.2139/ssrn.7037939 · July 2026 · Lean 4 · Unique Normal Forms</span>
               <p class="paper-blurb" id="paper-note-3">Addressing the open problem of unique normal forms in non-&omega;-overlapping term rewriting systems (Klop's Problem 79), this paper provides a Lean-formalized refutation of Lemma 64 in the published proof by <a href="https://doi.org/10.4230/LIPIcs.FSCD.2016.22" data-goatcounter-click="out:doi.org/10.4230/LIPIcs.FSCD.2016.22" target="_blank" rel="noopener">Kahrs and Smith (FSCD 2016)</a>. By presenting an explicit, complete targeted proof graph on three terms for the rule <span class="rule">d(x) &rarr; x</span> that omits a required rewrite equation, the work demonstrates the structural gap in the printed proof. Additionally, the paper mechanizes proofs of the underlying consistency invariants and finite support properties, isolates the exact reductive path needed to repair the theorem, and constructs rewriting systems whose overlap certificates require infinite carriers.</p>
               <button type="button" class="paper-toggle" aria-expanded="false" aria-controls="paper-note-3" hidden>Expand</button>
             </div>
@@ -1270,7 +1291,7 @@
           <li class="paper">
             <div>
               <a class="paper-title" href="https://zenodo.org/records/23100845" data-goatcounter-click="out:zenodo.org/records/23100845" target="_blank" rel="noopener">The Primitive Recursor Test: Construction-Recognition Gap and Representation-Shift Failure in Formal Reasoning</a>
-              <span class="paper-meta"><span class="badge green">Zenodo</span> 10.5281/zenodo.23100845 · October 2026 · LLM Benchmarking</span>
+              <span class="paper-meta"><span class="badge zenodo">Zenodo</span> 10.5281/zenodo.23100845 · October 2026 · LLM Benchmarking</span>
               <p class="paper-blurb" id="paper-note-4">This study introduces the Primitive Recursor Test (PRT), an empirical benchmark evaluating mathematical reasoning and formal deduction across 30 large language models over 4,160 controlled sessions. Evaluating termination proofs for primitive recursion against mechanized Lean 4 and TTT2/CeTA ground truth, the benchmark identifies a severe construction-recognition gap: while models failed to construct valid autonomous proofs in 64.6% of sessions and achieved only a 0.8% success rate from raw rules alone, performance reached 94.2% when evaluating pre-constructed proof candidates on a multiple-choice menu. These results quantify systemic bottlenecks in autonomous representation shift during automated formal reasoning.</p>
               <button type="button" class="paper-toggle" aria-expanded="false" aria-controls="paper-note-4" hidden>Expand</button>
             </div>
