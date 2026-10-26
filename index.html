@@ -991,7 +991,7 @@
               rebuilt it in 2026 as four research notebooks.
             </p>
             <p>
-              Each week the model works out what a gap should be worth from the
+              Each week the model works out the worth of a gap from the
               inventory and refinery figures that were public at the time, and
               takes a position when the market has moved away from it. Flight
               data reads regional jet demand four days before the government
@@ -1114,8 +1114,8 @@
             </div>
             <p>
               A company built with Prof. Charles Calomiris to answer a question
-              the industry answers by instinct: what is a specific building
-              feature actually worth, in this location, at this moment. The
+              the industry answers by instinct: the worth of a specific building
+              feature, in this location, at this moment. The
               model isolates the revenue effect of amenities and green
               certifications building by building, controlling for hundreds of
               structural and locational variables. I built the data foundation
@@ -1167,7 +1167,7 @@
                 <li class="paper-item">
                   <div>
                     <h4>REM Part 1. Model introduction</h4>
-                    <p>What REM is and the six findings the model produces.</p>
+                    <p>The scope of REM and the six findings the model produces.</p>
                   </div>
                   <a
                     class="btn"
@@ -1181,7 +1181,7 @@
                   <div>
                     <h4>REM Part 2. Building the dataset</h4>
                     <p>
-                      How building-level features are extracted from
+                      The extraction of building-level features from
                       unstructured sources.
                     </p>
                   </div>
@@ -1255,9 +1255,9 @@
         <ul class="papers">
           <li class="paper">
             <div>
-              <a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7659838" data-goatcounter-click="out:papers.ssrn.com/sol3/papers.cfm?abstract_id=7659838" target="_blank" rel="noopener">A Counterexample to Lemma 64 of the Kahrs and Smith Proof for RTA-79</a>
-              <span class="paper-meta"><span class="badge ssrn">SSRN</span> 10.2139/ssrn.7659838 · October 2026 · Term Rewriting · Proof Graphs</span>
-              <p class="paper-blurb" id="paper-note-rta79">The paper presents a counterexample on three terms to Lemma 64 in the Kahrs and Smith proof of RTA-79. It checks the consistency invariant and the proof-graph conditions, identifies the failed induction step, and constructs a universal graph on the same carrier after changing a parent edge.</p>
+              <a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7659838" data-goatcounter-click="out:papers.ssrn.com/sol3/papers.cfm?abstract_id=7659838" target="_blank" rel="noopener">A Counterexample to Lemma 64 of the Kahrs and Smith Proof for RTA-79, and Its Implications for Automated Proofs of Unique Normal Forms</a>
+              <span class="paper-meta"><span class="badge ssrn">SSRN</span> 10.2139/ssrn.7659838 · October 2026 · Lean 4 · Term Rewriting · Proof Graphs</span>
+              <p class="paper-blurb" id="paper-note-rta79">The paper gives a Lean-formalized counterexample to Lemma 64 of <a href="https://doi.org/10.4230/LIPIcs.FSCD.2016.22" data-goatcounter-click="out:doi.org/10.4230/LIPIcs.FSCD.2016.22" target="_blank" rel="noopener">Kahrs and Smith (FSCD 2016)</a>, the lemma on which their published solution of RTA-79 depends. For the rule <span class="rule">d(x) &rarr; x</span>, a complete targeted proof graph on three terms satisfies every hypothesis of the lemma and omits the root equation between d(c) and c; one Lean theorem proves the hypotheses and the failure of the conclusion, and a changed parent edge gives a universal graph on the same carrier. The automated confluence provers CSI and ACP implement the main theorem as a criterion for unique normal forms, and the FSCD 2016 proof cited for that criterion depends on the refuted lemma.</p>
               <button type="button" class="paper-toggle" aria-expanded="false" aria-controls="paper-note-rta79" hidden>Expand</button>
             </div>
             <a class="paper-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7659838" data-goatcounter-click="out:papers.ssrn.com/sol3/papers.cfm?abstract_id=7659838" target="_blank" rel="noopener">Read on SSRN</a>
@@ -1266,7 +1266,7 @@
             <div>
               <a class="paper-title" href="https://arxiv.org/abs/2512.00081" data-goatcounter-click="out:arxiv.org/abs/2512.00081" target="_blank" rel="noopener">The Orientation Boundary for Step-Duplicating Recursors: A Machine-Checked Structural Theory of Termination Proofs</a>
               <span class="paper-meta"><span class="badge arxiv">arXiv</span> 2512.00081 · v12, September 2026 · Lean 4 · Term Rewriting</span>
-              <p class="paper-blurb" id="paper-note-1">This paper establishes a machine-checked theoretical boundary for termination proofs of step-duplicating recursion in term rewriting systems. Formalized in Lean 4, the work proves an impossibility theorem across twelve standard measure families, demonstrating that direct syntactical measures fail precisely because they cannot incorporate duplicated step arguments without violating strict monotonicity. To resolve termination where direct interpretations fail, the paper constructs complete automated proof certificates utilizing dependency pairs, nonlinear polynomial interpretations, and multiset path orderings, verified via CeTA-certified TTT2 pipelines.</p>
+              <p class="paper-blurb" id="paper-note-1">The recursor rule recur(b, s, succ(n)) &rarr; wrap(s, recur(b, s, n)) copies its step argument and terminates. Among direct measures built from counter and payload by constants, sums, products, maxima and natural scalar multiples, the measures that orient every root successor step are exactly those that ignore the copied payload and increase strictly with the counter: the Orientation Boundary. Every natural-valued measure that keeps both wrapper arguments with bounded counter gain fails, and twelve direct measure families fail by the same comparison; termination needs dependency-pair projection, nonlinear counter-payload coupling or a path order. Seventy-six termination methods from the literature receive a machine-checked verdict, every numbered result is checked in Lean 4, and TTT2 with CeTA certifies the recursor.</p>
               <button type="button" class="paper-toggle" aria-expanded="false" aria-controls="paper-note-1" hidden>Expand</button>
             </div>
             <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact</a>
@@ -1275,7 +1275,7 @@
             <div>
               <a class="paper-title" href="https://arxiv.org/abs/2604.22844" data-goatcounter-click="out:arxiv.org/abs/2604.22844" target="_blank" rel="noopener">Observer Determinacy of Termination Certificates: Sufficient Statistics, Blackwell Comparison, and Simple Projections for Step-Duplicating Recursion</a>
               <span class="paper-meta"><span class="badge arxiv">arXiv</span> 2604.22844 · v5, September 2026 · Lean 4 · Proof Theory</span>
-              <p class="paper-blurb" id="paper-note-2">This work bridges proof theory and statistical decision theory by formalizing the concept of observer determinacy for termination certificates. It establishes an exact equivalence between licensing termination targets under deterministic observation and statistical sufficiency, mapping observer refinement directly to Blackwell comparison. Applied to step-duplicating recursors, the Lean 4 formalization demonstrates that orienting expressions necessarily project away duplicated arguments, providing a mathematical criterion for determining when lower-dimensional projections license valid termination certificates outside conventional direct-measure grammars.</p>
+              <p class="paper-blurb" id="paper-note-2">An observer licenses a target when the target is constant on the observer's fibers. For a sound and complete language whose observer sees the input dimension, operational inexpressibility is equivalent to two context-sharing worlds with equal observations and different target values, and each hypothesis is necessary. The least weight refused by a repair with k side symbols is 1 &minus; V<sub>k</sub>(&mu;), a weakly decreasing convex curve; observer refinement equals deterministic Blackwell comparison, and licensing equals statistical sufficiency under deterministic observation and a full-support prior. On the step-duplicating recursor, every orienting expression of the direct-measure grammar ignores the copied argument, and the counter observer licenses an orienting target outside that grammar. The general results and the recursor instances are formalized in Lean 4.</p>
               <button type="button" class="paper-toggle" aria-expanded="false" aria-controls="paper-note-2" hidden>Expand</button>
             </div>
             <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact</a>
@@ -1283,26 +1283,26 @@
           <li class="paper">
             <div>
               <a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939" data-goatcounter-click="out:papers.ssrn.com/sol3/papers.cfm?abstract_id=7037939" target="_blank" rel="noopener">Confluence on the Normalizing Core: Normal Forms Without Termination or Global Normalization</a>
-              <span class="paper-meta"><span class="badge ssrn">SSRN</span> 10.2139/ssrn.7037939 · July 2026 · Lean 4 · Unique Normal Forms</span>
-              <p class="paper-blurb" id="paper-note-3">Addressing the open problem of unique normal forms in non-&omega;-overlapping term rewriting systems (Klop's Problem 79), this paper provides a Lean-formalized refutation of Lemma 64 in the published proof by <a href="https://doi.org/10.4230/LIPIcs.FSCD.2016.22" data-goatcounter-click="out:doi.org/10.4230/LIPIcs.FSCD.2016.22" target="_blank" rel="noopener">Kahrs and Smith (FSCD 2016)</a>. By presenting an explicit, complete targeted proof graph on three terms for the rule <span class="rule">d(x) &rarr; x</span> that omits a required rewrite equation, the work demonstrates the structural gap in the printed proof. Additionally, the paper mechanizes proofs of the underlying consistency invariants and finite support properties, isolates the exact reductive path needed to repair the theorem, and constructs rewriting systems whose overlap certificates require infinite carriers.</p>
+              <span class="paper-meta"><span class="badge ssrn">SSRN</span> 10.2139/ssrn.7037939 · July 2026, revised October 2026 · Lean 4 · Unique Normal Forms</span>
+              <p class="paper-blurb" id="paper-note-3">Unique normal forms can coexist with divergence and failure of confluence. For an arbitrary rewrite relation the paper separates three domains: points that normalize, points convertible to normal forms, and points whose every descendant normalizes. Restriction to the normalizable points is confluent exactly when normal forms are unique under reduction, and uniqueness under conversion adds one reflection condition. The paper classifies every relation that realizes a prescribed idempotent normalizer, and saturation gives the greatest relation with the original normal forms and conversion. Certificate constructions require infinite carriers for a fixed three-rule system and a seven-rule family, and the finite-carrier route to Klop's Problem 79 reduces to a stated representation premise, proved for the descending class. The results are formalized in Lean 4.</p>
               <button type="button" class="paper-toggle" aria-expanded="false" aria-controls="paper-note-3" hidden>Expand</button>
             </div>
             <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary" target="_blank" rel="noopener">Lean artifact</a>
           </li>
           <li class="paper">
             <div>
-              <a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7640059" data-goatcounter-click="out:papers.ssrn.com/sol3/papers.cfm?abstract_id=7640059" target="_blank" rel="noopener">The Boundary-Observation Principle</a>
-              <span class="paper-meta"><span class="badge ssrn">SSRN</span> 10.2139/ssrn.7640059 · October 2026 · Lean 4 · Information Theory</span>
-              <p class="paper-blurb" id="paper-note-merged-states">The paper studies states that produce the same observation record. It relates discrimination to information gained and reading cost, and gives conditions for zero-error recovery. The results are formalized in Lean 4.</p>
+              <a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7640059" data-goatcounter-click="out:papers.ssrn.com/sol3/papers.cfm?abstract_id=7640059" target="_blank" rel="noopener">Entangled Merged Pairs: The Observation-Boundary Principle</a>
+              <span class="paper-meta"><span class="badge ssrn">SSRN</span> 10.2139/ssrn.7640059 · October 2026 · Lean 4 · Information Theory · Quantum Information</span>
+              <p class="paper-blurb" id="paper-note-merged-states">An observer maps states to records, and its boundary is the set of merged pairs: two distinct states with one record. The principle gives four equivalent descriptions of a merged pair and places the boundary at the zero set of Le Cam's discrimination over record-determined readings; acquiring c bits across it costs at least c ln 2 / &Delta; in expectation, and one side symbol resolves the pair. A merged pair with law (&kappa;, &rho;) carries entanglement &kappa;&rho;, defined from observation and conditional probabilities before any Hilbert space, and quantum entanglement is its purified case, with concurrence C&sup2; = 4&kappa;&rho; and largest CHSH score 2&radic;(1 + 4&kappa;&rho;). A thermodynamic form gives &beta;Q = &Delta;S + I + D for a finite system and a Gibbs reservoir. The principle and its quantum and thermodynamic form are formalized in Lean 4 with Mathlib.</p>
               <button type="button" class="paper-toggle" aria-expanded="false" aria-controls="paper-note-merged-states" hidden>Expand</button>
             </div>
-            <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary/blob/main/4.MERGED_STATES_OF_AN_OBSERVER_CLAIM_INDEX.md" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary/blob/main/4.MERGED_STATES_OF_AN_OBSERVER_CLAIM_INDEX.md" target="_blank" rel="noopener">Lean artifact</a>
+            <a class="paper-link" href="https://github.com/MosesRahnama/The-Orientation-Boundary/blob/main/4.BOUNDARY_OBSERVATION_PRINCIPLE_CLAIM_INDEX.md" data-goatcounter-click="out:github.com/MosesRahnama/The-Orientation-Boundary/blob/main/4.BOUNDARY_OBSERVATION_PRINCIPLE_CLAIM_INDEX.md" target="_blank" rel="noopener">Lean artifact</a>
           </li>
           <li class="paper">
             <div>
               <a class="paper-title" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7647678" data-goatcounter-click="out:papers.ssrn.com/sol3/papers.cfm?abstract_id=7647678" target="_blank" rel="noopener">The Primitive Recursor Test: Construction-Recognition Gap and Representation-Shift Failure in Formal Reasoning in Frontier LLMs</a>
               <span class="paper-meta"><span class="badge ssrn">SSRN</span> 7647678 · October 2026 · LLM Benchmarking</span>
-              <p class="paper-blurb" id="paper-note-4">This study introduces the Primitive Recursor Test (PRT), an empirical benchmark evaluating mathematical reasoning and formal deduction across 30 large language models over 4,160 controlled sessions. Evaluating termination proofs for primitive recursion against mechanized Lean 4 and TTT2/CeTA ground truth, the benchmark identifies a severe construction-recognition gap: while models failed to construct valid autonomous proofs in 64.6% of sessions and achieved only a 0.8% success rate from raw rules alone, performance reached 94.2% when evaluating pre-constructed proof candidates on a multiple-choice menu. These results quantify systemic bottlenecks in autonomous representation shift during automated formal reasoning.</p>
+              <p class="paper-blurb" id="paper-note-4">The Primitive Recursor Test (PRT) evaluates 30 language models across 4,160 isolated sessions on termination proofs for the primitive recursor, with answer keys backed by Lean 4 proofs and TTT2/CeTA certificates. On the two-rule recursor, 155 of 240 responses (64.6%) fail to supply a mathematically valid proof, and proofs derived from the displayed rules occur in 2 of 240 recursor sessions and 0 of 480 eight-rule sessions. Given a menu of five valid methods, 452 of 480 sessions (94.2%) classify the recursive-call method correctly, so construction and recognition measure separate abilities. Across repetitions within at least one open task, 29 of 30 models change proof method and 13 reverse their termination verdict.</p>
               <button type="button" class="paper-toggle" aria-expanded="false" aria-controls="paper-note-4" hidden>Expand</button>
             </div>
             <a class="paper-link" href="https://github.com/MosesRahnama/The-Primitive-Recursor-Test" data-goatcounter-click="out:github.com/MosesRahnama/The-Primitive-Recursor-Test" target="_blank" rel="noopener">Data and code</a>
